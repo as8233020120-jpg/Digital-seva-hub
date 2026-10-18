@@ -1,80 +1,190 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123b77">
 <title>Digital Seva Hub</title>
 <style>
-:root{--blue:#1457d9;--navy:#10254a;--bg:#f4f7fc;--ink:#17243b;--muted:#68758b;--line:#e5eaf2}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
-header{background:linear-gradient(120deg,#1246b8,#2376ed);color:#fff;padding:22px 18px 28px;border-radius:0 0 24px 24px}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1000px;margin:auto}.brand{font-weight:800;font-size:20px}.tag{font-size:12px;opacity:.85}.hero{max-width:1000px;margin:24px auto 0}.hero h1{margin:0 0 6px;font-size:25px}.hero p{margin:0;opacity:.88;font-size:14px}
-.wrap{max-width:1000px;margin:-14px auto 0;padding:0 14px 30px}.notice{background:#fff4d6;color:#694d00;border:1px solid #ffe39a;padding:11px 13px;border-radius:12px;font-size:12px;margin-bottom:16px}
-.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.stat,.panel,.service{background:white;border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 4px 16px #13294b08}.stat small{color:var(--muted)}.stat strong{display:block;font-size:22px;margin-top:5px}.section-title{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 12px}.section-title h2{font-size:18px;margin:0}.section-title span{font-size:12px;color:var(--muted)}
-.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.service{cursor:pointer;text-align:left;color:var(--ink);font:inherit;min-height:112px}.service .emoji{font-size:25px}.service b{display:block;margin:8px 0 3px}.service small{color:var(--muted)}
-.panel h3{margin:0 0 12px;font-size:16px}.activity{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}.activity:last-child{border:0}.muted{color:var(--muted)}
-nav{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:10px 4px calc(10px + env(safe-area-inset-bottom));z-index:3}nav button{border:0;background:transparent;color:var(--muted);font-size:12px;padding:4px;cursor:pointer}nav button.active{color:var(--blue);font-weight:700}
-button.primary{background:var(--blue);color:#fff;border:0;border-radius:10px;padding:11px 14px;font-weight:700;cursor:pointer}
-.page{display:none}.page.active{display:block}.field{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;margin:7px 0 13px;font:inherit}.login-box{max-width:440px;margin:30px auto;padding:20px}
-footer{text-align:center;padding:16px;color:var(--muted);font-size:11px}
-@media(min-width:700px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.services{grid-template-columns:repeat(4,minmax(0,1fr))}.wrap{padding-left:22px;padding-right:22px}.hero h1{font-size:30px}}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#1b2940}
+header{background:#123b77;color:white;padding:16px}
+nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.logo{font-size:22px;font-weight:bold}
+.logo span{color:#ffd166}
+button{cursor:pointer;border:0;border-radius:8px;padding:12px;font-weight:bold}
+.login{background:#ffd166;color:#123b77}
+.hero{background:linear-gradient(130deg,#123b77,#1976c9);color:white;padding:35px 18px}
+.inner,main{max-width:1000px;margin:auto}
+.hero h1{font-size:29px}
+.hero p{line-height:1.6}
+#search{width:100%;max-width:550px;padding:14px;border:0;border-radius:8px;font-size:16px}
+main{padding:20px 14px}
+h2{font-size:21px}
+.quick,.services{display:grid;gap:12px}
+.quick{grid-template-columns:repeat(4,1fr)}
+.services{grid-template-columns:repeat(3,1fr)}
+.tile,.service,.member{background:white;padding:16px;border-radius:12px;box-shadow:0 2px 10px #0000000c}
+.tile{text-align:center}
+.tile b{display:block;margin-top:8px}
+.emoji{font-size:29px}
+.service h3{font-size:17px}
+.service p{font-size:13px;color:#64748b;line-height:1.5;min-height:38px}
+.service button,.member button{background:#e5efff;color:#123b77;width:100%}
+.member{margin:22px 0}
+.notice{background:#fff2cf;padding:14px;border-radius:9px;font-size:13px;line-height:1.6}
+footer{margin-top:28px;background:#102c53;color:white;text-align:center;padding:24px;line-height:1.8}
+.modal{display:none;position:fixed;inset:0;background:#0009;align-items:center;justify-content:center;padding:15px;z-index:10}
+.box{background:white;padding:22px;border-radius:13px;width:100%;max-width:390px}
+.box input{width:100%;padding:12px;margin:9px 0;border:1px solid #ccd4e0;border-radius:8px;font-size:15px}
+.primary{width:100%;background:#123b77;color:white}
+.close{float:right;background:#eee}
+@media(max-width:600px){
+ .quick{grid-template-columns:repeat(2,1fr)}
+ .services{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .service{padding:12px}
+ .hero h1{font-size:25px}
+ .logo{font-size:19px}
+}
 </style>
 </head>
 <body>
 <header>
-  <div class="top"><div><div class="brand">🔷 Digital Seva Hub</div><div class="tag">Member Service Portal</div></div><button class="primary" onclick="showPage('login')">Login</button></div>
-  <div class="hero"><h1 id="greeting">Namaste! 👋</h1><p>Apni digital services ek hi jagah manage karein.</p></div>
-</header>
-<main class="wrap">
-  <div class="notice">DEMO VERSION — yahan dikhaya gaya wallet balance aur activity sirf sample data hai. Koi real payment ya government service process nahi hoti.</div>
-  <section id="dashboard" class="page active">
-    <div class="stats">
-      <div class="stat"><small>Demo Wallet Balance</small><strong>₹0.00</strong></div>
-      <div class="stat"><small>Total Requests</small><strong>0</strong></div>
-      <div class="stat"><small>Pending Requests</small><strong>0</strong></div>
-      <div class="stat"><small>Account Status</small><strong style="font-size:17px">Demo</strong></div>
-    </div>
-    <div class="section-title"><h2>Digital Services</h2><span>Demo only</span></div>
-    <div class="services">
-      <button class="service" onclick="requestService('PAN Application Tracking')"><span class="emoji">🪪</span><b>PAN Tracking</b><small>Application status demo</small></button>
-      <button class="service" onclick="requestService('Mobile Recharge')"><span class="emoji">📱</span><b>Mobile Recharge</b><small>Mock request only</small></button>
-      <button class="service" onclick="requestService('Bill Payment')"><span class="emoji">🧾</span><b>Bill Payment</b><small>Mock request only</small></button>
-      <button class="service" onclick="showPage('wallet')"><span class="emoji">👛</span><b>Wallet History</b><small>Demo ledger</small></button>
-    </div>
-    <div class="section-title"><h2>Recent Activity</h2><span id="activity-count">0 entries</span></div>
-    <div class="panel"><div id="activity-list" class="muted">Abhi koi demo request nahi hai.</div></div>
-  </section>
-  <section id="wallet" class="page">
-    <div class="section-title"><h2>Wallet</h2><span>Demo mode</span></div>
-    <div class="panel"><h3>Available demo balance</h3><strong style="font-size:28px">₹0.00</strong><p class="muted">Real money add/withdraw karne ki facility is demo mein nahi hai.</p></div>
-    <div class="section-title"><h2>Ledger</h2></div><div class="panel muted">Abhi koi transaction nahi hai.</div>
-  </section>
-  <section id="profile" class="page">
-    <div class="section-title"><h2>Member Profile</h2></div>
-    <div class="panel"><label for="member-name">Display name</label><input id="member-name" class="field" placeholder="Apna naam likhein"><button class="primary" onclick="saveName()">Save display name</button><p class="muted">Ye naam sirf is browser session mein rahega; abhi account database se connected nahi hai.</p></div>
-  </section>
-  <section id="login" class="page">
-    <div class="panel login-box"><h2>Member Login</h2><p class="muted">Ye sirf UI demo hai. Abhi real account create/login enabled nahi hai.</p><label>Email</label><input class="field" type="email" placeholder="you@example.com" disabled><label>Password</label><input class="field" type="password" placeholder="Password" disabled><button class="primary" onclick="alert('Real login agle step mein secure authentication ke saath connect hoga.')">Demo login info</button></div>
-  </section>
-  <section id="admin" class="page">
-    <div class="section-title"><h2>Admin Preview</h2><span>Not secured / demo</span></div>
-    <div class="notice">Admin page abhi preview ke liye hai. Isse real users, balances ya payments manage na karein.</div>
-    <div class="panel"><h3>Admin modules (planned)</h3><p>Users • Service requests • Wallet ledger • Reports</p><p class="muted">Secure admin permissions backend setup ke baad banengi.</p></div>
-  </section>
-</main>
 <nav>
-  <button class="active" data-page="dashboard" onclick="showPage('dashboard')">🏠<br>Home</button>
-  <button data-page="wallet" onclick="showPage('wallet')">👛<br>Wallet</button>
-  <button data-page="admin" onclick="showPage('admin')">🛡️<br>Admin</button>
-  <button data-page="profile" onclick="showPage('profile')">👤<br>Profile</button>
+<div class="logo">Digital <span>Seva</span> Hub</div>
+<button class="login" onclick="openLogin()">Member Login</button>
 </nav>
-<footer>Digital Seva Hub • Learning prototype • Not affiliated with RK Print</footer>
+</header>
+
+<section class="hero">
+<div class="inner">
+<h1>आपकी डिजिटल सेवाएँ, एक ही जगह</h1>
+<p>PAN, रिचार्ज, ऑनलाइन फॉर्म और डिजिटल सेवाओं की जानकारी पाएँ।</p>
+<input id="search" placeholder="अपनी सेवा खोजें..." oninput="filterServices()">
+</div>
+</section>
+
+<main>
+<h2>त्वरित सेवाएँ</h2>
+<div class="quick">
+<div class="tile">🪪<b>PAN Card</b></div>
+<div class="tile">📱<b>Mobile Recharge</b></div>
+<div class="tile">💡<b>Bill Payment</b></div>
+<div class="tile">📝<b>Online Forms</b></div>
+</div>
+
+<h2>हमारी सेवाएँ</h2>
+<div class="services" id="services">
+<div class="service" data-search="pan card पैन कार्ड">
+<div class="emoji">🪪</div><h3>PAN Card Services</h3>
+<p>PAN आवेदन और संबंधित जानकारी।</p>
+<button onclick="info('PAN Card','PAN आवेदन के लिए आधिकारिक पोर्टल का उपयोग करें।')">सेवा देखें</button>
+</div>
+<div class="service" data-search="mobile recharge रिचार्ज">
+<div class="emoji">📱</div><h3>Mobile Recharge</h3>
+<p>मोबाइल रिचार्ज सेवाओं की जानकारी।</p>
+<button onclick="info('Mobile Recharge','रिचार्ज सुविधा जोड़ने के लिए अधिकृत सेवा प्रदाता की जरूरत होगी।')">सेवा देखें</button>
+</div>
+<div class="service" data-search="dth recharge">
+<div class="emoji">📺</div><h3>DTH Recharge</h3>
+<p>DTH रिचार्ज की जानकारी।</p>
+<button onclick="info('DTH Recharge','असली रिचार्ज सुविधा बाद में अधिकृत API से जोड़ी जा सकती है।')">सेवा देखें</button>
+</div>
+<div class="service" data-search="bill payment बिजली बिल">
+<div class="emoji">💡</div><h3>Bill Payment</h3>
+<p>बिल भुगतान सेवाओं की जानकारी।</p>
+<button onclick="info('Bill Payment','भुगतान के लिए सुरक्षित और अधिकृत भुगतान सेवा चाहिए।')">सेवा देखें</button>
+</div>
+<div class="service" data-search="government schemes सरकारी योजना">
+<div class="emoji">🏛️</div><h3>Government Schemes</h3>
+<p>सरकारी योजनाओं की जानकारी।</p>
+<button onclick="info('Government Schemes','सरकारी योजनाओं की जानकारी के लिए MyScheme पोर्टल देखें।')">सेवा देखें</button>
+</div>
+<div class="service" data-search="online forms ऑनलाइन फॉर्म">
+<div class="emoji">📝</div><h3>Online Forms</h3>
+<p>ऑनलाइन फॉर्म और आवेदन की जानकारी।</p>
+<button onclick="info('Online Forms','हर आवेदन संबंधित आधिकारिक वेबसाइट पर पूरा करें।')">सेवा देखें</button>
+</div>
+<div class="service" data-search="aadhaar आधार">
+<div class="emoji">🪪</div><h3>Aadhaar Information</h3>
+<p>आधार सेवाओं की जानकारी।</p>
+<button onclick="info('Aadhaar','आधार की आधिकारिक वेबसाइट: uidai.gov.in')">सेवा देखें</button>
+</div>
+<div class="service" data-search="voter id वोटर कार्ड">
+<div class="emoji">🗳️</div><h3>Voter ID</h3>
+<p>वोटर कार्ड संबंधी जानकारी।</p>
+<button onclick="info('Voter ID','वोटर सेवाओं की आधिकारिक वेबसाइट: voters.eci.gov.in')">सेवा देखें</button>
+</div>
+<div class="service" data-search="help support contact संपर्क">
+<div class="emoji">☎️</div><h3>Help & Support</h3>
+<p>वेबसाइट सहायता और संपर्क।</p>
+<button onclick="info('Help & Support','संपर्क नंबर या ईमेल जोड़ने के लिए आपकी जानकारी चाहिए।')">संपर्क करें</button>
+</div>
+</div>
+
+<div class="member">
+<h2>Member Area</h2>
+<p>सदस्य सुविधाओं के लिए लॉगिन करें।</p>
+<button onclick="openLogin()">Login / Register</button>
+</div>
+
+<div class="notice">
+<b>ध्यान दें:</b> यह स्वतंत्र डेमो वेबसाइट है, सरकारी वेबसाइट नहीं। Login अभी केवल डेमो है। असली अकाउंट, डेटा, भुगतान और रिचार्ज के लिए सुरक्षित backend और अधिकृत सेवाओं की जरूरत होगी।
+</div>
+</main>
+
+<footer>
+<b>Digital Seva Hub</b><br>
+आपकी डिजिटल सेवाओं का साथी<br>
+© 2026 Digital Seva Hub
+</footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+<div class="box">
+<button class="close" onclick="closeModal()">✕</button>
+<h2 id="modalTitle">Member Login</h2>
+<div id="formArea">
+<input id="memberName" placeholder="पूरा नाम" style="display:none">
+<input id="memberContact" placeholder="मोबाइल नंबर या ईमेल">
+<input id="memberPassword" type="password" placeholder="पासवर्ड">
+<button class="primary" id="submit" onclick="demoLogin()">Login</button>
+</div>
+<p id="switch">नया अकाउंट? <a href="#" onclick="registerMode();return false">Register करें</a></p>
+<p style="font-size:12px;color:#64748b">यह डेमो है। कोई अकाउंट नहीं बनता और पासवर्ड सेव नहीं होता।</p>
+</div>
+</div>
+
 <script>
-const requests=[];
-function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});}
-function requestService(name){if(!confirm(name+' ke liye ek demo request add karein? Koi real service/payment nahi hogi.'))return;requests.unshift({name,time:new Date().toLocaleString('en-IN')});document.getElementById('activity-count').textContent=requests.length+' entries';document.getElementById('activity-list').innerHTML=requests.map(r=>'<div class="activity"><span>'+escapeHtml(r.name)+'<br><span class="muted">Demo request</span></span><span class="muted">'+escapeHtml(r.time)+'</span></div>').join('');showPage('dashboard');}
-function saveName(){const n=document.getElementById('member-name').value.trim();if(n){document.getElementById('greeting').textContent='Namaste, '+n+'! 👋';alert('Display name updated for this page.');}}
-function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function filterServices(){
+const q=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('.service').forEach(card=>{
+card.style.display=card.dataset.search.includes(q)?'block':'none';
+});
+}
+function info(title,message){
+document.getElementById('modalTitle').textContent=title;
+document.getElementById('formArea').innerHTML='<p>'+message+'</p><button class="primary" onclick="closeModal()">ठीक है</button>';
+document.getElementById('switch').textContent='';
+document.getElementById('modal').style.display='flex';
+}
+function openLogin(){
+document.getElementById('modalTitle').textContent='Member Login';
+document.getElementById('formArea').innerHTML='<input id="memberContact" placeholder="मोबाइल नंबर या ईमेल"><input id="memberPassword" type="password" placeholder="पासवर्ड"><button class="primary" onclick="demoLogin()">Login</button>';
+document.getElementById('switch').innerHTML='नया अकाउंट? <a href="#" onclick="registerMode();return false">Register करें</a>';
+document.getElementById('modal').style.display='flex';
+}
+function registerMode(){
+document.getElementById('modalTitle').textContent='Demo Registration';
+document.getElementById('formArea').innerHTML='<input id="memberName" placeholder="पूरा नाम"><input id="memberContact" placeholder="मोबाइल नंबर या ईमेल"><input id="memberPassword" type="password" placeholder="डेमो पासवर्ड"><button class="primary" onclick="demoLogin()">Register</button>';
+document.getElementById('switch').innerHTML='<a href="#" onclick="openLogin();return false">Login पर वापस जाएँ</a>';
+}
+function demoLogin(){
+alert('यह केवल डेमो है। असली Login के लिए सुरक्षित backend बनाना होगा।');
+}
+function closeModal(){
+document.getElementById('modal').style.display='none';
+}
 </script>
 </body>
 </html>
