@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -21,7 +20,7 @@ button{cursor:pointer;border:0;border-radius:8px;padding:12px;font-weight:bold}
 .hero p{line-height:1.6}
 #search{width:100%;max-width:550px;padding:14px;border:0;border-radius:8px;font-size:16px}
 main{padding:20px 14px}
-h2{font-size:21px}
+h2{font-size:21px;margin-top:28px}
 .quick,.services{display:grid;gap:12px}
 .quick{grid-template-columns:repeat(4,1fr)}
 .services{grid-template-columns:repeat(3,1fr)}
@@ -31,9 +30,9 @@ h2{font-size:21px}
 .emoji{font-size:29px}
 .service h3{font-size:17px}
 .service p{font-size:13px;color:#64748b;line-height:1.5;min-height:38px}
-.service button,.member button{background:#e5efff;color:#123b77;width:100%}
+.service button,.service a.btn-link,.member button{background:#e5efff;color:#123b77;width:100%;display:block;text-align:center;text-decoration:none;font-size:14px;margin-top:8px}
 .member{margin:22px 0}
-.notice{background:#fff2cf;padding:14px;border-radius:9px;font-size:13px;line-height:1.6}
+.notice{background:#fff2cf;padding:14px;border-radius:9px;font-size:13px;line-height:1.6;margin-top:20px}
 footer{margin-top:28px;background:#102c53;color:white;text-align:center;padding:24px;line-height:1.8}
 .modal{display:none;position:fixed;inset:0;background:#0009;align-items:center;justify-content:center;padding:15px;z-index:10}
 .box{background:white;padding:22px;border-radius:13px;width:100%;max-width:390px}
@@ -60,67 +59,105 @@ footer{margin-top:28px;background:#102c53;color:white;text-align:center;padding:
 <section class="hero">
 <div class="inner">
 <h1>आपकी डिजिटल सेवाएँ, एक ही जगह</h1>
-<p>PAN, रिचार्ज, ऑनलाइन फॉर्म और डिजिटल सेवाओं की जानकारी पाएँ।</p>
-<input id="search" placeholder="अपनी सेवा खोजें..." oninput="filterServices()">
+<p>PAN, रिचार्ज, सरकारी योजनाएँ और डिजिटल सेवाओं के आधिकारिक लिंक पाएँ।</p>
+<input id="search" placeholder="अपनी सेवा खोजें (जैसे: PAN, Aadhaar, Recharge)..." oninput="filterServices()">
 </div>
 </section>
 
 <main>
 <h2>त्वरित सेवाएँ</h2>
 <div class="quick">
-<div class="tile">🪪<b>PAN Card</b></div>
-<div class="tile">📱<b>Mobile Recharge</b></div>
-<div class="tile">💡<b>Bill Payment</b></div>
-<div class="tile">📝<b>Online Forms</b></div>
+<div class="tile" onclick="document.getElementById('search').value='pan';filterServices()">🪪<b>PAN Card</b></div>
+<div class="tile" onclick="document.getElementById('search').value='recharge';filterServices()">📱<b>Recharge</b></div>
+<div class="tile" onclick="document.getElementById('search').value='bill';filterServices()">💡<b>Bills</b></div>
+<div class="tile" onclick="document.getElementById('search').value='aadhaar';filterServices()">🏛️<b>Aadhaar</b></div>
 </div>
 
-<h2>हमारी सेवाएँ</h2>
+<h2>डॉक्यूमेंट सेवाएँ (Document Services)</h2>
 <div class="services" id="services">
-<div class="service" data-search="pan card पैन कार्ड">
+
+<div class="service" data-search="aadhaar आधार uidai">
+<div class="emoji">🆔</div><h3>Aadhaar Services</h3>
+<p>आधार कार्ड डाउनलोड, अपडेट और स्टेटस जाँचें।</p>
+<a class="btn-link" href="https://uidai.gov.in" target="_blank">आधिकारिक पोर्टल</a>
+</div>
+
+<div class="service" data-search="pan card पैन कार्ड incometax">
 <div class="emoji">🪪</div><h3>PAN Card Services</h3>
-<p>PAN आवेदन और संबंधित जानकारी।</p>
-<button onclick="info('PAN Card','PAN आवेदन के लिए आधिकारिक पोर्टल का उपयोग करें।')">सेवा देखें</button>
+<p>नया PAN कार्ड आवेदन और e-PAN डाउनलोड।</p>
+<a class="btn-link" href="https://www.incometax.gov.in" target="_blank">आधिकारिक पोर्टल</a>
 </div>
-<div class="service" data-search="mobile recharge रिचार्ज">
-<div class="emoji">📱</div><h3>Mobile Recharge</h3>
-<p>मोबाइल रिचार्ज सेवाओं की जानकारी।</p>
-<button onclick="info('Mobile Recharge','रिचार्ज सुविधा जोड़ने के लिए अधिकृत सेवा प्रदाता की जरूरत होगी।')">सेवा देखें</button>
+
+<div class="service" data-search="voter id वोटर कार्ड eci">
+<div class="emoji">🗳️</div><h3>Voter ID Services</h3>
+<p>वोटर कार्ड लिस्ट में नाम जोड़ना और नया कार्ड।</p>
+<a class="btn-link" href="https://voters.eci.gov.in" target="_blank">आधिकारिक पोर्टल</a>
 </div>
-<div class="service" data-search="dth recharge">
-<div class="emoji">📺</div><h3>DTH Recharge</h3>
-<p>DTH रिचार्ज की जानकारी।</p>
-<button onclick="info('DTH Recharge','असली रिचार्ज सुविधा बाद में अधिकृत API से जोड़ी जा सकती है।')">सेवा देखें</button>
+
+<div class="service" data-search="driving licence dl parivahan">
+<div class="emoji">🚗</div><h3>Driving Licence & RC</h3>
+<p>ड्राइविंग लाइसेंस (DL), Learner LL और वाहन RC।</p>
+<a class="btn-link" href="https://parivahan.gov.in" target="_blank">आधिकारिक पोर्टल</a>
 </div>
-<div class="service" data-search="bill payment बिजली बिल">
-<div class="emoji">💡</div><h3>Bill Payment</h3>
-<p>बिल भुगतान सेवाओं की जानकारी।</p>
-<button onclick="info('Bill Payment','भुगतान के लिए सुरक्षित और अधिकृत भुगतान सेवा चाहिए।')">सेवा देखें</button>
+
+<div class="service" data-search="passport पाссовोर्ड">
+<div class="emoji">🛂</div><h3>Passport Services</h3>
+<p>नया पासपोर्ट आवेदन और अपॉइंटमेंट बुकिंग।</p>
+<a class="btn-link" href="https://www.passportindia.gov.in" target="_blank">आधिकारिक पोर्टल</a>
 </div>
-<div class="service" data-search="government schemes सरकारी योजना">
-<div class="emoji">🏛️</div><h3>Government Schemes</h3>
-<p>सरकारी योजनाओं की जानकारी।</p>
-<button onclick="info('Government Schemes','सरकारी योजनाओं की जानकारी के लिए MyScheme पोर्टल देखें।')">सेवा देखें</button>
+
+<div class="service" data-search="digilocker डिजिटल लॉकर">
+<div class="emoji">📁</div><h3>DigiLocker</h3>
+<p>अपने सभी सरकारी दस्तावेज डिजिटल रूप में सुरक्षित रखें।</p>
+<a class="btn-link" href="https://www.digilocker.gov.in" target="_blank">आधिकारिक पोर्टल</a>
 </div>
-<div class="service" data-search="online forms ऑनलाइन फॉर्म">
-<div class="emoji">📝</div><h3>Online Forms</h3>
-<p>ऑनलाइन फॉर्म और आवेदन की जानकारी।</p>
-<button onclick="info('Online Forms','हर आवेदन संबंधित आधिकारिक वेबसाइट पर पूरा करें।')">सेवा देखें</button>
+
+<div class="service" data-search="ration card राशन कार्ड">
+<div class="emoji">🌾</div><h3>Ration Card Portal</h3>
+<p>राशन कार्ड सूची और पात्रता की जानकारी।</p>
+<a class="btn-link" href="https://nfsa.gov.in" target="_blank">आधिकारिक पोर्टल</a>
 </div>
-<div class="service" data-search="aadhaar आधार">
-<div class="emoji">🪪</div><h3>Aadhaar Information</h3>
-<p>आधार सेवाओं की जानकारी।</p>
-<button onclick="info('Aadhaar','आधार की आधिकारिक वेबसाइट: uidai.gov.in')">सेवा देखें</button>
+
+<h2>रिचार्ज और बिल भुगतान (Recharge & Bills)</h2>
+
+<div class="service" data-search="mobile recharge dth mobile">
+<div class="emoji">📱</div><h3>Mobile & DTH Recharge</h3>
+<p>मोबाइल और डीटीएच रिचार्ज सेवा (API इंटीग्रेशन बाकी)।</p>
+<button onclick="info('Mobile / DTH Recharge','यह डेमो सेक्शन है। असली रिचार्ज API जुड़ने के बाद यहाँ सीधे रिचार्ज कर सकेंगे।')">सेवा विवरण</button>
 </div>
-<div class="service" data-search="voter id वोटर कार्ड">
-<div class="emoji">🗳️</div><h3>Voter ID</h3>
-<p>वोटर कार्ड संबंधी जानकारी।</p>
-<button onclick="info('Voter ID','वोटर सेवाओं की आधिकारिक वेबसाइट: voters.eci.gov.in')">सेवा देखें</button>
+
+<div class="service" data-search="electricity bill बिजली पानी gas fastag">
+<div class="emoji">💡</div><h3>Electricity & Utility Bills</h3>
+<p>बिजली, पानी, गैस और FASTag बिल भुगतान जानकारी।</p>
+<button onclick="info('Bill Payment','Bharat BillPay (BBPS) के जरिए सुरक्षित बिल भुगतान सिस्टम बाद में जोड़ा जाएगा।')">सेवा विवरण</button>
 </div>
-<div class="service" data-search="help support contact संपर्क">
-<div class="emoji">☎️</div><h3>Help & Support</h3>
-<p>वेबसाइट सहायता और संपर्क।</p>
-<button onclick="info('Help & Support','संपर्क नंबर या ईमेल जोड़ने के लिए आपकी जानकारी चाहिए।')">संपर्क करें</button>
+
+<h2>सरकारी योजनाएँ (Government Schemes)</h2>
+
+<div class="service" data-search="government schemes myscheme योजना">
+<div class="emoji">🏛️</div><h3>Government Schemes (MyScheme)</h3>
+<p>केंद्र और राज्य सरकार की सभी योजनाओं की जानकारी।</p>
+<a class="btn-link" href="https://www.myscheme.gov.in" target="_blank">योजनाएँ देखें</a>
 </div>
+
+<div class="service" data-search="pm kisan पीएम किसान">
+<div class="emoji">👨‍🌾</div><h3>PM Kisan Samman Nidhi</h3>
+<p>पीएम किसान योजना स्टेटस और लाभार्थी सूची।</p>
+<a class="btn-link" href="https://pmkisan.gov.in" target="_blank">आधिकारिक पोर्टल</a>
+</div>
+
+<div class="service" data-search="e shram ई श्रम">
+<div class="emoji">👷</div><h3>e-Shram Card</h3>
+<p>असंगठित क्षेत्र के श्रमिकों का ई-श्रम कार्ड पंजीकरण।</p>
+<a class="btn-link" href="https://eshram.gov.in" target="_blank">आधिकारिक पोर्टल</a>
+</div>
+
+<div class="service" data-search="ayushman bharat आयुष्मान भारत">
+<div class="emoji">🏥</div><h3>Ayushman Bharat / ABHA</h3>
+<p>आयुष्मान कार्ड और स्वास्थ्य बीमा योजना।</p>
+<a class="btn-link" href="https://beneficiary.nha.gov.in" target="_blank">आधिकारिक पोर्टल</a>
+</div>
+
 </div>
 
 <div class="member">
@@ -130,7 +167,7 @@ footer{margin-top:28px;background:#102c53;color:white;text-align:center;padding:
 </div>
 
 <div class="notice">
-<b>ध्यान दें:</b> यह स्वतंत्र डेमो वेबसाइट है, सरकारी वेबसाइट नहीं। Login अभी केवल डेमो है। असली अकाउंट, डेटा, भुगतान और रिचार्ज के लिए सुरक्षित backend और अधिकृत सेवाओं की जरूरत होगी।
+<b>ध्यान दें:</b> यह स्वतंत्र डेमो वेबसाइट है, कोई सरकारी वेबसाइट नहीं है। सभी डॉक्यूमेंट सेवाओं के बटन सीधे उनके अधिकृत (Official) पोर्टल पर ले जाते हैं ताकि उपयोगकर्ता सुरक्षित रूप से आवेदन कर सकें।
 </div>
 </main>
 
@@ -145,13 +182,12 @@ footer{margin-top:28px;background:#102c53;color:white;text-align:center;padding:
 <button class="close" onclick="closeModal()">✕</button>
 <h2 id="modalTitle">Member Login</h2>
 <div id="formArea">
-<input id="memberName" placeholder="पूरा नाम" style="display:none">
 <input id="memberContact" placeholder="मोबाइल नंबर या ईमेल">
 <input id="memberPassword" type="password" placeholder="पासवर्ड">
-<button class="primary" id="submit" onclick="demoLogin()">Login</button>
+<button class="primary" onclick="demoLogin()">Login</button>
 </div>
 <p id="switch">नया अकाउंट? <a href="#" onclick="registerMode();return false">Register करें</a></p>
-<p style="font-size:12px;color:#64748b">यह डेमो है। कोई अकाउंट नहीं बनता और पासवर्ड सेव नहीं होता।</p>
+<p style="font-size:12px;color:#64748b;margin-top:10px">यह डेमो है। कोई वास्तविक अकाउंट या डेटा सेव नहीं होता।</p>
 </div>
 </div>
 
