@@ -28,11 +28,12 @@ button:active{transform:scale(0.96)}
 #search{width:100%;max-width:550px;padding:12px 18px;border:0;border-radius:30px;font-size:15px;box-shadow:0 4px 15px rgba(0,0,0,0.15);outline:none}
 
 main{padding:16px 14px;background:#f0f4f9;border-radius:20px 20px 0 0;margin-top:-10px}
-h2{font-size:18px;margin:20px 0 12px;color:#0f2c59;border-left:4px solid #1976c9;padding-left:8px;display:flex;align-items:center;gap:8px}
+h2{font-size:18px;margin:25px 0 12px;color:#0f2c59;border-left:4px solid #1976c9;padding-left:8px;display:flex;align-items:center;gap:8px}
 
 /* Banner Headers */
 .banner-title{background:linear-gradient(90deg,#10b981,#059669);color:white;padding:14px;border-radius:12px;text-align:center;font-weight:bold;font-size:16px;margin:20px 0 14px;letter-spacing:0.5px}
 .banner-purple{background:linear-gradient(90deg,#7c3aed,#4f46e5)}
+.banner-orange{background:linear-gradient(90deg,#f59e0b,#d97706)}
 
 /* Cards Grids */
 .portals-grid,.services-grid,.color-cards-grid{display:grid;gap:12px;margin-bottom:20px}
@@ -59,6 +60,7 @@ h2{font-size:18px;margin:20px 0 12px;color:#0f2c59;border-left:4px solid #1976c9
 .card-pink{background:linear-gradient(135deg,#ec4899,#be185d)}
 .card-orange{background:linear-gradient(135deg,#f97316,#c2410c)}
 .card-red{background:linear-gradient(135deg,#ef4444,#b91c1c)}
+.card-purple{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
 
 /* Server List Rows */
 .list-card{background:white;padding:14px;border-radius:12px;border:1px solid #e2e8f0;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;position:relative}
@@ -83,7 +85,7 @@ h2{font-size:18px;margin:20px 0 12px;color:#0f2c59;border-left:4px solid #1976c9
 footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height:1.8;font-size:13px}
 
 /* Modals */
-.modal{display:none;position:fixed;inset:0;background:rgba(11,29,58,0.85);align-items:flex-start;justify-content:center;padding:15px;z-index:99;overflow-y:auto;backdrop-filter:blur(4px)}
+.modal{display:none;position:fixed;inset:0;background:rgba(11,29,58,0.85);align-items:flex-start;justify-content:center;padding:15px;z-index:9999;overflow-y:auto;backdrop-filter:blur(4px)}
 .box{background:#f8fafc;padding:0;border-radius:20px;width:100%;max-width:440px;box-shadow:0 15px 35px rgba(0,0,0,0.3);margin:20px 0;overflow:hidden;position:relative}
 .modal-header-card{background:linear-gradient(135deg,#1976c9,#0f2c59);color:white;padding:25px 20px;text-align:center;position:relative}
 .close-btn{position:absolute;top:15px;right:15px;background:rgba(255,255,255,0.2);color:white;border-radius:50%;width:32px;height:32px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center}
@@ -99,7 +101,7 @@ footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height
 .primary-btn{width:100%;background:#0f2c59;color:white;padding:13px;font-size:15px;border-radius:10px;margin-top:10px}
 
 /* Announcement Popup */
-.announcement-modal{display:none;position:fixed;inset:0;background:rgba(5,15,35,0.9);align-items:center;justify-content:center;padding:15px;z-index:999;backdrop-filter:blur(5px)}
+.announcement-modal{display:none;position:fixed;inset:0;background:rgba(5,15,35,0.9);align-items:center;justify-content:center;padding:15px;z-index:99999;backdrop-filter:blur(5px)}
 .announcement-box{background:#111927;color:white;border-radius:20px;width:100%;max-width:420px;padding:20px;border:1px solid #1f293d;position:relative}
 .announcement-close{position:absolute;top:-12px;right:-12px;background:#ef4444;color:white;border-radius:50%;width:34px;height:34px;font-weight:bold;display:flex;align-items:center;justify-content:center;cursor:pointer}
 
@@ -221,9 +223,8 @@ footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height
   </div>
 </div>
 
-<!-- Category List View -->
+<!-- Category List View 1: Voter Services -->
 <h2>🗳️ Voter Services <span style="font-size:12px;color:#64748b;font-weight:normal">(4 Services)</span></h2>
-
 <div class="list-card" onclick="openLogin()">
   <div class="list-card-info">
     <div class="list-card-icon">🗳️</div>
@@ -234,51 +235,48 @@ footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height
   </div>
   <span class="badge-tag tag-instant">INSTANT</span>
 </div>
-
 <div class="list-card" onclick="openLogin()">
   <div class="list-card-info">
     <div class="list-card-icon">🗳️</div>
     <div class="list-card-text">
       <b>Voter PDF (OTP)</b>
-      <div class="server-chips">
-        <span class="server-chip">Server 1</span>
-        <span class="server-chip">Server 2</span>
-      </div>
+      <div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div>
     </div>
   </div>
   <span class="badge-tag tag-instant" style="background:#e0e7ff;color:#4338ca">OTP</span>
 </div>
-
 <div class="list-card" onclick="openLogin()">
   <div class="list-card-info">
     <div class="list-card-icon">🗳️</div>
     <div class="list-card-text">
       <b>Voter Mobile Link</b>
-      <div class="server-chips">
-        <span class="server-chip">Server 1</span>
-        <span class="server-chip">Server 2</span>
-      </div>
+      <div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div>
     </div>
   </div>
   <span class="badge-tag tag-hot">HOT</span>
 </div>
+<div class="list-card" onclick="openLogin()">
+  <div class="list-card-info">
+    <div class="list-card-icon">🗳️</div>
+    <div class="list-card-text">
+      <b>Voter Status</b>
+      <span>Check EPIC tracking status</span>
+    </div>
+  </div>
+</div>
 
+<!-- Category List View 2: PAN Services -->
 <h2>💳 PAN Services <span style="font-size:12px;color:#64748b;font-weight:normal">(3 Services)</span></h2>
-
 <div class="list-card" onclick="openLogin()">
   <div class="list-card-info">
     <div class="list-card-icon">🪪</div>
     <div class="list-card-text">
       <b>Aadhaar to PAN Find</b>
-      <div class="server-chips">
-        <span class="server-chip">Server 1</span>
-        <span class="server-chip">Server 2</span>
-      </div>
+      <div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div>
     </div>
   </div>
   <span class="badge-tag tag-live">100%</span>
 </div>
-
 <div class="list-card" onclick="openLogin()">
   <div class="list-card-info">
     <div class="list-card-icon">🪪</div>
@@ -288,36 +286,78 @@ footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height
     </div>
   </div>
 </div>
+<div class="list-card" onclick="openLogin()">
+  <div class="list-card-info">
+    <div class="list-card-icon">🪪</div>
+    <div class="list-card-text">
+      <b>PAN Full Details</b>
+      <span>PAN से पूरी जानकारी निकालें</span>
+    </div>
+  </div>
+</div>
 
+<!-- Category List View 3: Vehicle / RC / DL -->
 <h2>🚗 Vehicle / RC / DL <span style="font-size:12px;color:#64748b;font-weight:normal">(7 Services)</span></h2>
-
 <div class="list-card" onclick="openLogin()">
   <div class="list-card-info">
     <div class="list-card-icon">🚗</div>
     <div class="list-card-text">
       <b>RC PDF (4 Server)</b>
-      <div class="server-chips">
-        <span class="server-chip">Server 1</span>
-        <span class="server-chip">Server 2</span>
-        <span class="server-chip">Server 3</span>
-      </div>
+      <div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span><span class="server-chip">Server 3</span></div>
     </div>
   </div>
   <span class="badge-tag tag-hot">HOT</span>
 </div>
-
 <div class="list-card" onclick="openLogin()">
   <div class="list-card-info">
     <div class="list-card-icon">🚗</div>
     <div class="list-card-text">
       <b>DL PDF (3 Server)</b>
-      <div class="server-chips">
-        <span class="server-chip">Server 1</span>
-        <span class="server-chip">Server 2</span>
-      </div>
+      <div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div>
     </div>
   </div>
   <span class="badge-tag tag-instant">INSTANT</span>
+</div>
+<div class="list-card" onclick="openLogin()">
+  <div class="list-card-info">
+    <div class="list-card-icon">🚗</div>
+    <div class="list-card-text">
+      <b>RC PDF Premium</b>
+      <span>Advanced server access</span>
+    </div>
+  </div>
+  <span class="badge-tag tag-new">NEW</span>
+</div>
+<div class="list-card" onclick="openLogin()">
+  <div class="list-card-info">
+    <div class="list-card-icon">🚗</div>
+    <div class="list-card-text">
+      <b>Vehicle Owner Info</b>
+      <span>All India RC details lookup</span>
+    </div>
+  </div>
+</div>
+
+<!-- Category List View 4: Farmer & Schemes -->
+<h2>🚜 Farmer & Schemes <span style="font-size:12px;color:#64748b;font-weight:normal">(5 Services)</span></h2>
+<div class="list-card" onclick="openLogin()">
+  <div class="list-card-info">
+    <div class="list-card-icon">🌾</div>
+    <div class="list-card-text">
+      <b>Farmer (DBT) Card</b>
+      <span>PDF + Status + Slip</span>
+    </div>
+  </div>
+  <span class="badge-tag tag-live">LIVE</span>
+</div>
+<div class="list-card" onclick="openLogin()">
+  <div class="list-card-info">
+    <div class="list-card-icon">🌾</div>
+    <div class="list-card-text">
+      <b>PM Kisan Beneficiary Status</b>
+      <span>Check installment & list</span>
+    </div>
+  </div>
 </div>
 
 <!-- Detailed Footer Info Section -->
@@ -370,7 +410,7 @@ Made with ❤️ in India | आपकी डिजिटल सेवाओं �
 <a href="https://t.me" target="_blank" class="float-tg">✈️</a>
 
 <!-- Login Modal -->
-<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+<div class="modal" id="modal">
 <div class="box">
   <div class="modal-header-card">
     <div class="close-btn" onclick="closeModal()">✕</div>
@@ -438,8 +478,43 @@ card.style.display=card.innerText.toLowerCase().includes(q)?'flex':'none';
 });
 }
 
-function openLogin(){ document.getElementById('modal').style.display='flex'; }
-function closeModal(){ document.getElementById('modal').style.display='none'; }
+function openLogin(){ 
+  document.getElementById('modal').style.display='flex'; 
+}
+
+function closeModal(){ 
+  document.getElementById('modal').style.display='none'; 
+}
 
 function switchTab(tab){
-do
+document.getElementById('view-login').style.display = tab === 'login' ? 'block' : 'none';
+document.getElementById('view-reg').style.display = tab === 'reg' ? 'block' : 'none';
+document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+document.getElementById('tab-reg').classList.toggle('active', tab === 'reg');
+}
+
+function handleLoginSubmit(){
+const user = document.getElementById('loginUser').value;
+const pass = document.getElementById('loginPass').value;
+if(!user || !pass){ alert('कृपया डिटेल्स भरें!'); return; }
+closeModal();
+document.getElementById('announcementModal').style.display = 'flex';
+}
+
+function closeAnnouncement(){
+document.getElementById('announcementModal').style.display = 'none';
+}
+
+function activateUserDashboard(){
+closeAnnouncement();
+document.getElementById('topSubNav').style.display = 'flex';
+document.getElementById('walletPill').style.display = 'inline-flex';
+document.getElementById('headerLoginBtn').textContent = '👤 My Account';
+document.getElementById('headerLoginBtn').style.background = '#22c55e';
+document.getElementById('headerLoginBtn').style.color = 'white';
+alert('🎉 Dashboard Unlocked Successfully!');
+}
+</script>
+</body>
+</html>
+
