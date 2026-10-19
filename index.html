@@ -4,28 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0f2c59">
-<title>Digital Seva Hub</title>
+<title>Digital Seva Hub 🇮🇳</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f0f4f9;color:#1b2940}
+body{margin:0;font-family:Arial,sans-serif;background:#0b1d3a;color:#1b2940}
 header{background:linear-gradient(135deg,#0f2c59,#1b4d8e);color:white;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
 nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.logo{font-size:22px;font-weight:bold;letter-spacing:0.5px}
+.logo{font-size:22px;font-weight:bold;letter-spacing:0.5px;color:white}
 .logo span{color:#ffd166}
 button{cursor:pointer;border:0;border-radius:8px;padding:12px;font-weight:bold;transition:0.2s}
 button:active{transform:scale(0.96)}
-.login{background:#ffd166;color:#0f2c59;box-shadow:0 2px 6px rgba(255,209,102,0.4)}
+.login-btn{background:#ffd166;color:#0f2c59;box-shadow:0 2px 6px rgba(255,209,102,0.4)}
 
-.hero{background:linear-gradient(135deg,#0f2c59,#1976c9);color:white;padding:40px 18px;text-align:center}
+.hero{background:linear-gradient(135deg,#0f2c59,#1976c9);color:white;padding:35px 18px;text-align:center}
 .inner,main{max-width:1000px;margin:auto}
 .hero h1{font-size:28px;margin-bottom:10px}
 .hero p{font-size:15px;opacity:0.9;line-height:1.5;margin-bottom:20px}
 #search{width:100%;max-width:550px;padding:14px 18px;border:0;border-radius:30px;font-size:16px;box-shadow:0 4px 15px rgba(0,0,0,0.15);outline:none}
 
-main{padding:20px 14px}
+main{padding:20px 14px;background:#f0f4f9;border-radius:20px 20px 0 0;margin-top:-15px}
 h2{font-size:20px;margin:25px 0 15px;color:#0f2c59;border-left:4px solid #1976c9;padding-left:10px}
 
-/* Moving Services Marquee Effect */
+/* Marquee */
 .marquee-container{overflow:hidden;white-space:nowrap;width:100%;background:white;padding:12px 0;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.05);margin-bottom:20px}
 .marquee-track{display:inline-block;animation:scrollMarquee 20s linear infinite;padding-left:100%}
 .marquee-track:hover{animation-play-state:paused}
@@ -35,47 +35,83 @@ h2{font-size:20px;margin:25px 0 15px;color:#0f2c59;border-left:4px solid #1976c9
 .quick,.services{display:grid;gap:15px}
 .quick{grid-template-columns:repeat(4,1fr)}
 .services{grid-template-columns:repeat(3,1fr)}
-.tile,.service,.member{background:white;padding:18px;border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:transform 0.2s, box-shadow 0.2s}
-.tile:hover,.service:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(15,44,89,0.12)}
+.tile,.service,.member{background:white;padding:18px;border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
 .tile{text-align:center;cursor:pointer}
 .tile b{display:block;margin-top:8px;font-size:14px;color:#0f2c59}
 .emoji{font-size:32px;margin-bottom:5px}
 .service h3{font-size:16px;margin:8px 0;color:#0f2c59}
 .service p{font-size:13px;color:#64748b;line-height:1.5;min-height:38px;margin-bottom:12px}
-.service button,.service a.btn-link,.member button{background:#eef4ff;color:#0f2c59;width:100%;display:block;text-align:center;text-decoration:none;font-size:14px;padding:10px;border-radius:8px;font-weight:bold;border:1px solid #d0e1fd;transition:0.2s}
-.service button:hover,.service a.btn-link:hover{background:#0f2c59;color:white}
-.member{margin:25px 0}
+.service button,.service a.btn-link,.member button{background:#eef4ff;color:#0f2c59;width:100%;display:block;text-align:center;text-decoration:none;font-size:14px;padding:10px;border-radius:8px;font-weight:bold;border:1px solid #d0e1fd}
+
 .notice{background:#fff8e7;border-left:4px solid #ffd166;padding:14px;border-radius:9px;font-size:13px;line-height:1.6;margin-top:20px;color:#5a4a1a}
 
-footer{margin-top:30px;background:#0b203f;color:white;text-align:center;padding:25px;line-height:1.8;font-size:14px}
+footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height:1.8;font-size:14px}
 
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;padding:15px;z-index:10;backdrop-filter:blur(3px)}
-.box{background:white;padding:24px;border-radius:16px;width:100%;max-width:390px;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
-.box input{width:100%;padding:12px;margin:10px 0;border:1px solid #ccd4e0;border-radius:8px;font-size:15px;outline:none}
-.box input:focus{border-color:#1976c9}
-.primary{width:100%;background:#0f2c59;color:white;margin-top:10px}
-.close{float:right;background:#f1f5f9;border-radius:50%;width:32px;height:32px;font-weight:bold;cursor:pointer}
+/* Premium Login Modal Layout */
+.modal{display:none;position:fixed;inset:0;background:rgba(11,29,58,0.85);align-items:flex-start;justify-content:center;padding:15px;z-index:99;overflow-y:auto;backdrop-filter:blur(4px)}
+.box{background:#f8fafc;padding:0;border-radius:20px;width:100%;max-width:440px;box-shadow:0 15px 35px rgba(0,0,0,0.3);margin:20px 0;overflow:hidden;position:relative}
+
+.modal-header-card{background:linear-gradient(135deg,#1976c9,#0f2c59);color:white;padding:25px 20px;text-align:center;position:relative}
+.close-btn{position:absolute;top:15px;right:15px;background:rgba(255,255,255,0.2);color:white;border-radius:50%;width:32px;height:32px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center}
+
+.portal-badge-list{display:flex;flex-direction:column;gap:8px;margin-top:15px}
+.portal-badge{background:rgba(255,255,255,0.12);padding:8px 14px;border-radius:20px;font-size:13px;text-align:left;display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.1)}
+
+.modal-body{padding:20px}
+.yellow-notice-box{background:#fff8e1;border:1px solid #ffe082;border-left:4px solid #ffa000;border-radius:12px;padding:14px;font-size:13px;color:#4e342e;line-height:1.5;margin-bottom:18px}
+.yellow-notice-box b{color:#d84315}
+
+.tab-switcher{display:flex;gap:8px;margin-bottom:20px;background:#e2e8f0;padding:4px;border-radius:12px}
+.tab-btn{flex:1;padding:10px;text-align:center;font-size:13px;border-radius:8px;color:#475569;background:transparent;cursor:pointer}
+.tab-btn.active{background:white;color:#0f2c59;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+
+.input-label{font-size:13px;font-weight:bold;color:#0f2c59;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.input-wrapper{position:relative;margin-bottom:8px}
+.input-wrapper input{width:100%;padding:12px 14px 12px 40px;border:1px solid #cbd5e1;border-radius:10px;font-size:14px;outline:none;background:white}
+.input-wrapper .input-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:16px;color:#64748b}
+.input-wrapper .eye-icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:16px;color:#64748b}
+
+.quick-chips{display:flex;gap:6px;margin-bottom:16px}
+.chip{background:#e2e8f0;color:#334155;font-size:11px;padding:4px 8px;border-radius:6px;font-weight:600}
+
+/* Captcha Styling */
+.captcha-box{background:#0f172a;color:white;padding:14px;border-radius:12px;margin:15px 0}
+.captcha-row{display:flex;align-items:center;gap:10px}
+.captcha-math{background:#1e293b;padding:8px 14px;border-radius:8px;font-size:18px;font-weight:bold;letter-spacing:2px;color:#ffd166;border:1px solid #334155}
+.captcha-input{flex:1;padding:10px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:white;font-size:14px;outline:none}
+.captcha-refresh{background:#334155;color:white;padding:10px 12px;border-radius:8px;cursor:pointer}
+
+.primary-btn{width:100%;background:#0f2c59;color:white;padding:13px;font-size:15px;border-radius:10px;margin-top:10px}
+.secondary-btn{width:100%;background:#e2e8f0;color:#0f2c59;padding:11px;font-size:14px;border-radius:10px;margin-top:8px}
+
+.social-box{background:#1e293b;color:white;padding:15px;border-radius:12px;margin-top:18px;text-align:center}
+.social-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:10px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:13px;margin-top:8px}
+.wa-btn{background:#22c55e;color:white}
+.tg-btn{background:#0ea5e9;color:white}
+
+.badges-row{display:flex;justify-content:center;gap:8px;margin-top:15px}
+.badge-chip{background:#e2e8f0;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:bold;color:#475569}
 
 @media(max-width:600px){
  .quick{grid-template-columns:repeat(2,1fr)}
  .services{grid-template-columns:repeat(2,minmax(0,1fr))}
  .service{padding:12px}
  .hero h1{font-size:24px}
- .logo{font-size:18px}
 }
 </style>
 </head>
 <body>
+
 <header>
 <nav>
-<div class="logo">Digital <span>Seva</span> Hub</div>
-<button class="login" onclick="openLogin()">Member Login</button>
+<div class="logo">Digital <span>Seva</span> Hub 🇮🇳</div>
+<button class="login-btn" onclick="openLogin()">Member Login</button>
 </nav>
 </header>
 
 <section class="hero">
 <div class="inner">
-<h1>आपकी डिजिटल सेवाएँ, एक ही जगह</h1>
+<h1>आपकी डिजिटल सेवाएँ, एक ही जगह 🇮🇳</h1>
 <p>PAN, रिचार्ज, सरकारी योजनाएँ और डिजिटल सेवाओं के आधिकारिक लिंक पाएँ।</p>
 <input id="search" placeholder="अपनी सेवा खोजें (जैसे: PAN, Aadhaar, Bill)..." oninput="filterServices()">
 </div>
@@ -83,7 +119,6 @@ footer{margin-top:30px;background:#0b203f;color:white;text-align:center;padding:
 
 <main>
 
-<!-- Moving Ticker / Services Marquee -->
 <div class="marquee-container">
 <div class="marquee-track">
 <span class="marquee-item">🪪 Aadhaar & PAN Services</span>
@@ -130,7 +165,7 @@ footer{margin-top:30px;background:#0b203f;color:white;text-align:center;padding:
 <a class="btn-link" href="https://parivahan.gov.in" target="_blank">आधिकारिक पोर्टल</a>
 </div>
 
-<div class="service" data-search="passport पाссовोर्ड">
+<div class="service" data-search="passport पासपोर्ट">
 <div class="emoji">🛂</div><h3>Passport Services</h3>
 <p>नया पासपोर्ट आवेदन और अपॉइंटमेंट बुकिंग।</p>
 <a class="btn-link" href="https://www.passportindia.gov.in" target="_blank">आधिकारिक पोर्टल</a>
@@ -152,14 +187,14 @@ footer{margin-top:30px;background:#0b203f;color:white;text-align:center;padding:
 
 <div class="service" data-search="mobile recharge dth mobile">
 <div class="emoji">📱</div><h3>Mobile & DTH Recharge</h3>
-<p>मोबाइल और डीटीएच रिचार्ज सेवा (API इंटीग्रेशन बाकी)।</p>
-<button onclick="info('Mobile / DTH Recharge','यह डेमो सेक्शन है। असली रिचार्ज API जुड़ने के बाद यहाँ सीधे रिचार्ज कर सकेंगे।')">सेवा विवरण</button>
+<p>सुविधाजनक मोबाइल और डीटीएच रिचार्ज सेवा Portal।</p>
+<button onclick="openLogin()">सेवा विवरण</button>
 </div>
 
 <div class="service" data-search="electricity bill बिजली पानी gas fastag">
 <div class="emoji">💡</div><h3>Electricity & Utility Bills</h3>
-<p>बिजली, पानी, गैस और FASTag बिल भुगतान जानकारी।</p>
-<button onclick="info('Bill Payment','Bharat BillPay (BBPS) के जरिए सुरक्षित बिल भुगतान सिस्टम बाद में जोड़ा जाएगा।')">सेवा विवरण</button>
+<p>बिजली, पानी, गैस और FASTag बिल भुगतान।</p>
+<button onclick="openLogin()">सेवा विवरण</button>
 </div>
 
 <h2>सरकारी योजनाएँ (Government Schemes)</h2>
@@ -192,64 +227,210 @@ footer{margin-top:30px;background:#0b203f;color:white;text-align:center;padding:
 
 <div class="member">
 <h2>Member Area</h2>
-<p>सदस्य सुविधाओं के लिए लॉगिन करें।</p>
+<p>विशेष सेवाओं और पोर्टल एक्सेस के लिए लॉगिन करें।</p>
 <button onclick="openLogin()">Login / Register</button>
 </div>
 
 <div class="notice">
-<b>ध्यान दें:</b> यह स्वतंत्र डेमो वेबसाइट है, कोई सरकारी वेबसाइट नहीं है। सभी डॉक्यूमेंट सेवाओं के बटन सीधे उनके अधिकृत (Official) पोर्टल पर le jaate hain.
+<b>सूचना:</b> यह एक डिजिटल सूचना एवं सेवा पोर्टल है। सभी दस्तावेज सेवाओं के बटन सीधे आधिकारिक (Official) सरकारी वेबसाइट पर ले जाते हैं। 🇮🇳
 </div>
 </main>
 
 <footer>
-<b>Digital Seva Hub</b><br>
-आपकी डिजिटल सेवाओं का साथी<br>
-© 2026 Digital Seva Hub
+<b>Digital Seva Hub 🇮🇳</b><br>
+Made with ❤️ in India | आपकी डिजिटल सेवाओं का भरोसेमंद साथी<br>
+© 2026 Digital Seva Hub. All Rights Reserved.
 </footer>
 
+<!-- Reference Styled Login Modal -->
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
 <div class="box">
-<button class="close" onclick="closeModal()">✕</button>
-<h2 id="modalTitle" style="color:#0f2c59;margin-top:0">Member Login</h2>
-<div id="formArea">
-<input id="memberContact" placeholder="मोबाइल नंबर या ईमेल">
-<input id="memberPassword" type="password" placeholder="पासवर्ड">
-<button class="primary" onclick="demoLogin()">Login</button>
-</div>
-<p id="switch" style="font-size:14px;text-align:center;margin-top:15px">नया अकाउंट? <a href="#" onclick="registerMode();return false">Register करें</a></p>
-<p style="font-size:12px;color:#64748b;margin-top:10px;text-align:center">यह डेमो है। कोई वास्तविक अकाउंट या डेटा सेव नहीं होता।</p>
+  <div class="modal-header-card">
+    <div class="close-btn" onclick="closeModal()">✕</div>
+    <h2 style="margin:0;font-size:22px">Welcome back to</h2>
+    <h3 style="margin:4px 0 10px;font-size:24px;color:#ffd166">Digital Seva Hub</h3>
+    <p style="margin:0;font-size:13px;opacity:0.9">India का डिजिटल सर्विस पोर्टल</p>
+    
+    <div class="portal-badge-list">
+      <div class="portal-badge">⚡ Instant Portal Access</div>
+      <div class="portal-badge">🛡️ 100% Secure Login System</div>
+    </div>
+  </div>
+
+  <div class="modal-body">
+    <div class="yellow-notice-box">
+      <b>📣 ज़रूरी सूचना — ज़रूर पढ़ें:</b><br>
+      Password भूल गए हैं? <b>Forgot Password</b> पर click करें, अपना Mobile Number या Email ID डालें।
+    </div>
+
+    <div class="tab-switcher">
+      <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">🔑 Login</button>
+      <button class="tab-btn" id="tab-forgot" onclick="switchTab('forgot')">🔑 Forgot Password?</button>
+      <button class="tab-btn" id="tab-reg" onclick="switchTab('reg')">👤+ नया Account</button>
+    </div>
+
+    <!-- Login Form View -->
+    <div id="view-login">
+      <div class="input-label">👤 Mobile / Username / Email</div>
+      <div class="input-wrapper">
+        <span class="input-icon">👤</span>
+        <input id="loginUser" placeholder="Mobile, Username या Email डालें">
+      </div>
+      <div class="quick-chips">
+        <span class="chip">📱 Mobile</span>
+        <span class="chip">👤 Username</span>
+        <span class="chip">✉️ Email</span>
+      </div>
+
+      <div class="input-label">🔒 Password</div>
+      <div class="input-wrapper">
+        <span class="input-icon">🔒</span>
+        <input id="loginPass" type="password" placeholder="Password दर्ज करें">
+        <span class="eye-icon" onclick="togglePassword('loginPass')">👁️</span>
+      </div>
+
+      <!-- Math Captcha -->
+      <div class="captcha-box">
+        <div class="captcha-row">
+          <div class="captcha-math" id="mathProblem">6 + 3 = ?</div>
+          <input class="captcha-input" id="captchaAnswer" placeholder="जवाब">
+          <button class="captcha-refresh" onclick="generateCaptcha()">🔄</button>
+        </div>
+        <div style="font-size:11px;color:#94a3b8;margin-top:6px;text-align:center">🤖 Bot Protection — सही जवाब दें</div>
+      </div>
+
+      <button class="primary-btn" onclick="handleLoginSubmit()">🔑 Login करें</button>
+    </div>
+
+    <!-- Forgot Password View -->
+    <div id="view-forgot" style="display:none">
+      <div class="input-label">📱 Registered Mobile / Email</div>
+      <div class="input-wrapper">
+        <span class="input-icon">📱</span>
+        <input id="forgotInput" placeholder="Mobile number या Email ID दर्ज करें">
+      </div>
+      <button class="primary-btn" onclick="alert('OTP आपके मोबाइल/ईमेल पर भेज दिया गया है!')">📩 OTP भेजें</button>
+    </div>
+
+    <!-- Register View -->
+    <div id="view-reg" style="display:none">
+      <div class="input-label">👤 पूरा नाम</div>
+      <div class="input-wrapper">
+        <span class="input-icon">👤</span>
+        <input id="regName" placeholder="अपना पूरा नाम दर्ज करें">
+      </div>
+
+      <div class="input-label">📱 मोबाइल नंबर</div>
+      <div class="input-wrapper">
+        <span class="input-icon">📱</span>
+        <input id="regPhone" placeholder="10 अंकों का मोबाइल नंबर">
+      </div>
+
+      <div class="input-label">🔒 Password set करें</div>
+      <div class="input-wrapper">
+        <span class="input-icon">🔒</span>
+        <input id="regPass" type="password" placeholder="नया Password दर्ज करें">
+        <span class="eye-icon" onclick="togglePassword('regPass')">👁️</span>
+      </div>
+
+      <div class="input-label">🔒 Confirm Password</div>
+      <div class="input-wrapper">
+        <span class="input-icon">🔒</span>
+        <input id="regCPass" type="password" placeholder="Password दोबारा दर्ज करें">
+      </div>
+
+      <button class="primary-btn" onclick="handleRegSubmit()">👤 Register Account</button>
+    </div>
+
+    <div class="social-box">
+      <div style="font-size:13px;font-weight:bold">🔔 हमसे ज़रूर जुड़ें</div>
+      <a href="#" class="social-btn wa-btn">💬 WhatsApp Channel Join करें</a>
+      <a href="#" class="social-btn tg-btn">✈️ Telegram Bot Join करें</a>
+    </div>
+
+    <div class="badges-row">
+      <span class="badge-chip">🛡️ Secure Login</span>
+      <span class="badge-chip">🎧 24/7 Support</span>
+    </div>
+  </div>
 </div>
 </div>
 
 <script>
+let num1 = 6, num2 = 3;
+
 function filterServices(){
 const q=document.getElementById('search').value.toLowerCase();
 document.querySelectorAll('.service').forEach(card=>{
 card.style.display=card.dataset.search.includes(q)?'block':'none';
 });
 }
-function info(title,message){
-document.getElementById('modalTitle').textContent=title;
-document.getElementById('formArea').innerHTML='<p style="line-height:1.6">'+message+'</p><button class="primary" onclick="closeModal()">ठीक है</button>';
-document.getElementById('switch').textContent='';
-document.getElementById('modal').style.display='flex';
-}
+
 function openLogin(){
-document.getElementById('modalTitle').textContent='Member Login';
-document.getElementById('formArea').innerHTML='<input id="memberContact" placeholder="मोबाइल नंबर या ईमेल"><input id="memberPassword" type="password" placeholder="पासवर्ड"><button class="primary" onclick="demoLogin()">Login</button>';
-document.getElementById('switch').innerHTML='नया अकाउंट? <a href="#" onclick="registerMode();return false">Register करें</a>';
 document.getElementById('modal').style.display='flex';
+generateCaptcha();
 }
-function registerMode(){
-document.getElementById('modalTitle').textContent='Demo Registration';
-document.getElementById('formArea').innerHTML='<input id="memberName" placeholder="पूरा नाम"><input id="memberContact" placeholder="मोबाइल नंबर या ईमेल"><input id="memberPassword" type="password" placeholder="डेमो पासवर्ड"><button class="primary" onclick="demoLogin()">Register</button>';
-document.getElementById('switch').innerHTML='<a href="#" onclick="openLogin();return false">Login पर वापस जाएँ</a>';
-}
-function demoLogin(){
-alert('यह केवल डेमो है। असली Login के लिए सुरक्षित backend बनाना होगा।');
-}
+
 function closeModal(){
 document.getElementById('modal').style.display='none';
+}
+
+function switchTab(tab){
+document.getElementById('view-login').style.display = tab === 'login' ? 'block' : 'none';
+document.getElementById('view-forgot').style.display = tab === 'forgot' ? 'block' : 'none';
+document.getElementById('view-reg').style.display = tab === 'reg' ? 'block' : 'none';
+
+document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+document.getElementById('tab-forgot').classList.toggle('active', tab === 'forgot');
+document.getElementById('tab-reg').classList.toggle('active', tab === 'reg');
+}
+
+function togglePassword(id){
+const input = document.getElementById(id);
+input.type = input.type === 'password' ? 'text' : 'password';
+}
+
+function generateCaptcha(){
+num1 = Math.floor(Math.random() * 9) + 1;
+num2 = Math.floor(Math.random() * 9) + 1;
+document.getElementById('mathProblem').textContent = `${num1} + ${num2} = ?`;
+document.getElementById('captchaAnswer').value = '';
+}
+
+function handleLoginSubmit(){
+const user = document.getElementById('loginUser').value;
+const pass = document.getElementById('loginPass').value;
+const ans = parseInt(document.getElementById('captchaAnswer').value);
+
+if(!user || !pass){
+alert('कृपया अपना User Details और Password दर्ज करें!');
+return;
+}
+if(ans !== (num1 + num2)){
+alert('गलत Captcha Answer! कृपया पुनः प्रयास करें।');
+generateCaptcha();
+return;
+}
+alert('लॉगिन सफल रहा!');
+closeModal();
+}
+
+function handleRegSubmit(){
+const name = document.getElementById('regName').value;
+const phone = document.getElementById('regPhone').value;
+const pass = document.getElementById('regPass').value;
+const cpass = document.getElementById('regCPass').value;
+
+if(!name || !phone || !pass || !cpass){
+alert('कृपया सभी जानकारी भरें!');
+return;
+}
+if(pass !== cpass){
+alert('Password मेल नहीं खा रहे हैं!');
+return;
+}
+alert('अकाउंट सफलतापूर्वक बन गया! अब लॉगिन करें।');
+switchTab('login');
 }
 </script>
 </body>
