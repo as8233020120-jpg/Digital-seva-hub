@@ -10,11 +10,23 @@
 body{margin:0;font-family:Arial,sans-serif;background:#0b1d3a;color:#1b2940}
 header{background:linear-gradient(135deg,#0f2c59,#1b4d8e);color:white;padding:12px 16px;box-shadow:0 4px 12px rgba(0,0,0,0.1);position:sticky;top:0;z-index:50}
 nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.nav-left{display:flex;align-items:center;gap:12px}
+.menu-icon{font-size:22px;cursor:pointer;color:white;background:rgba(255,255,255,0.15);padding:4px 8px;border-radius:6px}
 .logo{font-size:20px;font-weight:bold;letter-spacing:0.5px;color:white}
 .logo span{color:#ffd166}
 button{cursor:pointer;border:0;border-radius:8px;padding:10px;font-weight:bold;transition:0.2s}
 button:active{transform:scale(0.96)}
 .login-btn{background:#ffd166;color:#0f2c59;box-shadow:0 2px 6px rgba(255,209,102,0.4)}
+
+/* Side Navigation Drawer */
+.sidebar{position:fixed;top:0;left:-280px;width:280px;height:100%;background:#0b1d3a;color:white;z-index:1000;box-shadow:5px 0 25px rgba(0,0,0,0.5);transition:0.3s ease;padding:20px;overflow-y:auto}
+.sidebar.active{left:0}
+.sidebar-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:15px;margin-bottom:15px}
+.sidebar-links{list-style:none;padding:0;margin:0}
+.sidebar-links li{padding:12px 10px;border-bottom:1px solid rgba(255,255,255,0.05);font-size:14px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#e2e8f0}
+.sidebar-links li:hover{background:rgba(255,255,255,0.08);border-radius:8px;color:#ffd166}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:900;backdrop-filter:blur(3px)}
+.overlay.active{display:block}
 
 /* Top Quick Nav Bar */
 .top-sub-nav{background:#123b77;padding:8px 12px;overflow-x:auto;white-space:nowrap;display:none;gap:8px;align-items:center}
@@ -59,7 +71,7 @@ h2{font-size:18px;margin:25px 0 12px;color:#0f2c59;border-left:4px solid #1976c9
 .card-amber{background:linear-gradient(135deg,#f59e0b,#d97706)}
 
 /* Server List Rows */
-.list-card{background:white;padding:14px;border-radius:12px;border:1px solid #e2e8f0;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;position:relative}
+.list-card{background:white;padding:14px;border-radius:12px;border:1px solid #e2e8f0;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;position:relative;cursor:pointer}
 .list-card-info{display:flex;align-items:center;gap:12px}
 .list-card-icon{width:40px;height:40px;background:#e0f2fe;color:#0284c7;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
 .list-card-text b{font-size:14px;color:#0f2c59;display:block}
@@ -91,27 +103,27 @@ h2{font-size:18px;margin:25px 0 12px;color:#0f2c59;border-left:4px solid #1976c9
 
 footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height:1.8;font-size:13px}
 
-/* Modals */
-.modal{display:none;position:fixed;inset:0;background:rgba(11,29,58,0.85);align-items:flex-start;justify-content:center;padding:15px;z-index:9999;overflow-y:auto;backdrop-filter:blur(4px)}
-.box{background:#f8fafc;padding:0;border-radius:20px;width:100%;max-width:440px;box-shadow:0 15px 35px rgba(0,0,0,0.3);margin:20px 0;overflow:hidden;position:relative}
-.modal-header-card{background:linear-gradient(135deg,#1976c9,#0f2c59);color:white;padding:25px 20px;text-align:center;position:relative}
-.close-btn{position:absolute;top:15px;right:15px;background:rgba(255,255,255,0.2);color:white;border-radius:50%;width:32px;height:32px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.modal-body{padding:20px}
-.yellow-notice-box{background:#fff8e1;border:1px solid #ffe082;border-left:4px solid #ffa000;border-radius:12px;padding:14px;font-size:13px;color:#4e342e;line-height:1.5;margin-bottom:18px}
-.tab-switcher{display:flex;gap:8px;margin-bottom:20px;background:#e2e8f0;padding:4px;border-radius:12px}
-.tab-btn{flex:1;padding:10px;text-align:center;font-size:13px;border-radius:8px;color:#475569;background:transparent;cursor:pointer}
+/* Login Modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(11,29,58,0.88);align-items:center;justify-content:center;padding:15px;z-index:9999;overflow-y:auto;backdrop-filter:blur(5px)}
+.box{background:#ffffff;padding:0;border-radius:22px;width:100%;max-width:420px;box-shadow:0 20px 40px rgba(0,0,0,0.4);margin:auto;overflow:hidden;position:relative}
+.modal-header-card{background:linear-gradient(135deg,#0f2c59,#1976c9);color:white;padding:24px 20px;text-align:center;position:relative}
+.close-btn{position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.2);color:white;border-radius:50%;width:30px;height:30px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px}
+.modal-body{padding:22px}
+.yellow-notice-box{background:#fff8e1;border:1px solid #ffe082;border-left:4px solid #ffa000;border-radius:12px;padding:12px 14px;font-size:12px;color:#4e342e;line-height:1.5;margin-bottom:18px}
+.tab-switcher{display:flex;gap:6px;margin-bottom:18px;background:#e2e8f0;padding:4px;border-radius:12px}
+.tab-btn{flex:1;padding:10px;text-align:center;font-size:13px;border-radius:8px;color:#475569;background:transparent;cursor:pointer;font-weight:bold}
 .tab-btn.active{background:white;color:#0f2c59;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
-.input-label{font-size:13px;font-weight:bold;color:#0f2c59;margin-bottom:6px}
-.input-wrapper{position:relative;margin-bottom:12px}
-.input-wrapper input{width:100%;padding:12px 14px 12px 40px;border:1px solid #cbd5e1;border-radius:10px;font-size:14px;outline:none;background:white}
+.input-label{font-size:12px;font-weight:bold;color:#0f2c59;margin-bottom:6px}
+.input-wrapper{position:relative;margin-bottom:14px}
+.input-wrapper input{width:100%;padding:12px 14px 12px 40px;border:1px solid #cbd5e1;border-radius:10px;font-size:14px;outline:none;background:#f8fafc;color:#0f2c59}
 .input-wrapper .input-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:16px;color:#64748b}
-.primary-btn{width:100%;background:#0f2c59;color:white;padding:13px;font-size:15px;border-radius:10px;margin-top:10px}
+.primary-btn{width:100%;background:linear-gradient(135deg,#0f2c59,#1976c9);color:white;padding:13px;font-size:15px;border-radius:10px;margin-top:6px;font-weight:bold;box-shadow:0 4px 12px rgba(25,118,201,0.3)}
 
-/* Exact Screenshot Announcement Modal */
+/* Announcement Modal */
 .announcement-modal{display:none;position:fixed;inset:0;background:rgba(5,15,35,0.92);align-items:center;justify-content:center;padding:12px;z-index:99999;backdrop-filter:blur(6px)}
 .announcement-box{background:#0b192c;color:white;border-radius:22px;width:100%;max-width:440px;padding:22px;border:1px solid #1e293b;position:relative;box-shadow:0 20px 40px rgba(0,0,0,0.6)}
 .announcement-close{position:absolute;top:14px;right:14px;background:#ef4444;color:white;border-radius:50%;width:30px;height:30px;font-weight:bold;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px}
-.service-popup-row{background:#112238;border:1px solid #1e293b;border-radius:14px;padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;justify-content:between;gap:12px}
+.service-popup-row{background:#112238;border:1px solid #1e293b;border-radius:14px;padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .service-popup-info{display:flex;align-items:center;gap:12px;flex:1}
 .service-popup-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
 .popup-apply-btn{background:#10b981;color:white;border:0;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:bold;cursor:pointer;white-space:nowrap}
@@ -126,10 +138,33 @@ footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height
 
 <header>
 <nav>
-<div class="logo">Digital <span>Seva</span> Hub 🇮🇳</div>
+<div class="nav-left">
+  <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+  <div class="logo">Digital <span>Seva</span> Hub 🇮🇳</div>
+</div>
 <button class="login-btn" id="headerLoginBtn" onclick="openLogin()">Member Login</button>
 </nav>
 </header>
+
+<!-- Side Navigation Menu (Drawer) -->
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div style="font-size:18px;font-weight:bold;color:#ffd166">📌 Menu</div>
+    <div style="cursor:pointer;font-size:18px;background:rgba(255,255,255,0.2);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center" onclick="toggleSidebar()">✕</div>
+  </div>
+  <ul class="sidebar-links">
+    <li onclick="toggleSidebar();window.scrollTo({top:0,behavior:'smooth'})">🏠 Home Dashboard</li>
+    <li onclick="toggleSidebar();openLogin()">🔑 Member Login / Register</li>
+    <li onclick="toggleSidebar();window.scrollTo({top:500,behavior:'smooth'})">🖨️ Manual Print Portal</li>
+    <li onclick="toggleSidebar();window.scrollTo({top:900,behavior:'smooth'})">📄 Recent Status</li>
+    <li onclick="toggleSidebar();window.scrollTo({top:1400,behavior:'smooth'})">✋ Active Manual Services</li>
+    <li onclick="toggleSidebar();window.scrollTo({top:2000,behavior:'smooth'})">💎 Advance Premium Services</li>
+    <li onclick="toggleSidebar();window.scrollTo({top:2800,behavior:'smooth'})">🆔 Aadhaar & Voter Services</li>
+    <li onclick="toggleSidebar();window.scrollTo({top:3800,behavior:'smooth'})">🚗 Vehicle / RC / DL Services</li>
+    <li onclick="toggleSidebar();window.open('https://t.me','_blank')">✈️ Telegram Support Bot</li>
+  </ul>
+</div>
 
 <!-- Logged-in Top Sub Nav Bar -->
 <div class="top-sub-nav" id="topSubNav">
@@ -262,19 +297,4 @@ footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height
 <div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>ALL EID Aadhaar PDF</b><span>EID / UID se PDF & Aadhaar No.</span></div></div><span class="badge-tag tag-new">NEW</span></div>
 <div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar PDF (Biometric)</b><span>Fingerprint se PDF</span></div></div><span class="badge-tag tag-live">LIVE</span></div>
 <div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar PDF (OTP)</b><span>OTP se download</span></div></div><span class="badge-tag tag-instant">OTP</span></div>
-<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar Mobile Verify</b></div></div><span class="badge-tag tag-instant">OTP</span></div>
-<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar Verify</b></div></div></div>
-<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar Number Info</b></div></div></div>
-<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar Family Details</b><div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div></div></div></div>
-<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>NPCI Bank Link Status</b><span>Bank seeding</span></div></div><span class="badge-tag tag-live">LIVE</span></div>
-
-<!-- Voter Category List (4 Services) -->
-<h2>🗳️ Voter <span style="font-size:12px;color:#64748b;font-weight:normal">(4 Services)</span></h2>
-<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🗳️</div><div class="list-card-text"><b>Voter PDF Instant</b><span>No OTP</span></div></div><span class="badge-tag tag-instant">INSTANT</span></div>
-<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🗳️</div><div class="list-card-text"><b>Voter PDF (OTP)</b><div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div></div></div><span class="badge-tag tag-instant" style="background:#e0e7ff;color:#4338ca">OTP</span></div>
-<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🗳️</div><div class="list-card-text"><b>Voter Mobile Link</b><div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div></div></div><span class="badge-tag tag-hot">HOT</span></div>
-<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🗳️</div><div class="list-card-text"><b>Voter Status</b></div></div></div>
-
-<!-- PAN Category List -->
-<h2>💳 PAN <span style="font-size:12px;color:#64748b;font-weight:normal">(3 Services)</span></h2>
-<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🪪</div><div class="list-card-text"><b>Aadhaar to PAN Find</b><div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="l
