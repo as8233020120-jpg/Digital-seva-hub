@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -10,23 +11,11 @@
 body{margin:0;font-family:Arial,sans-serif;background:#0b1d3a;color:#1b2940}
 header{background:linear-gradient(135deg,#0f2c59,#1b4d8e);color:white;padding:12px 16px;box-shadow:0 4px 12px rgba(0,0,0,0.1);position:sticky;top:0;z-index:50}
 nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.nav-left{display:flex;align-items:center;gap:12px}
-.menu-icon{font-size:22px;cursor:pointer;color:white;background:rgba(255,255,255,0.15);padding:4px 8px;border-radius:6px}
 .logo{font-size:20px;font-weight:bold;letter-spacing:0.5px;color:white}
 .logo span{color:#ffd166}
 button{cursor:pointer;border:0;border-radius:8px;padding:10px;font-weight:bold;transition:0.2s}
 button:active{transform:scale(0.96)}
 .login-btn{background:#ffd166;color:#0f2c59;box-shadow:0 2px 6px rgba(255,209,102,0.4)}
-
-/* Side Navigation Drawer */
-.sidebar{position:fixed;top:0;left:-280px;width:280px;height:100%;background:#0b1d3a;color:white;z-index:1000;box-shadow:5px 0 25px rgba(0,0,0,0.5);transition:0.3s ease;padding:20px;overflow-y:auto}
-.sidebar.active{left:0}
-.sidebar-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:15px;margin-bottom:15px}
-.sidebar-links{list-style:none;padding:0;margin:0}
-.sidebar-links li{padding:12px 10px;border-bottom:1px solid rgba(255,255,255,0.05);font-size:14px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#e2e8f0}
-.sidebar-links li:hover{background:rgba(255,255,255,0.08);border-radius:8px;color:#ffd166}
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:900;backdrop-filter:blur(3px)}
-.overlay.active{display:block}
 
 /* Top Quick Nav Bar */
 .top-sub-nav{background:#123b77;padding:8px 12px;overflow-x:auto;white-space:nowrap;display:none;gap:8px;align-items:center}
@@ -103,7 +92,7 @@ h2{font-size:18px;margin:25px 0 12px;color:#0f2c59;border-left:4px solid #1976c9
 
 footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height:1.8;font-size:13px}
 
-/* Login Modal */
+/* Enhanced Login Modal Styling */
 .modal{display:none;position:fixed;inset:0;background:rgba(11,29,58,0.88);align-items:center;justify-content:center;padding:15px;z-index:9999;overflow-y:auto;backdrop-filter:blur(5px)}
 .box{background:#ffffff;padding:0;border-radius:22px;width:100%;max-width:420px;box-shadow:0 20px 40px rgba(0,0,0,0.4);margin:auto;overflow:hidden;position:relative}
 .modal-header-card{background:linear-gradient(135deg,#0f2c59,#1976c9);color:white;padding:24px 20px;text-align:center;position:relative}
@@ -116,6 +105,7 @@ footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height
 .input-label{font-size:12px;font-weight:bold;color:#0f2c59;margin-bottom:6px}
 .input-wrapper{position:relative;margin-bottom:14px}
 .input-wrapper input{width:100%;padding:12px 14px 12px 40px;border:1px solid #cbd5e1;border-radius:10px;font-size:14px;outline:none;background:#f8fafc;color:#0f2c59}
+.input-wrapper input:focus{border-color:#1976c9;background:#fff}
 .input-wrapper .input-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:16px;color:#64748b}
 .primary-btn{width:100%;background:linear-gradient(135deg,#0f2c59,#1976c9);color:white;padding:13px;font-size:15px;border-radius:10px;margin-top:6px;font-weight:bold;box-shadow:0 4px 12px rgba(25,118,201,0.3)}
 
@@ -138,33 +128,10 @@ footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height
 
 <header>
 <nav>
-<div class="nav-left">
-  <div class="menu-icon" onclick="toggleSidebar()">☰</div>
-  <div class="logo">Digital <span>Seva</span> Hub 🇮🇳</div>
-</div>
+<div class="logo">Digital <span>Seva</span> Hub 🇮🇳</div>
 <button class="login-btn" id="headerLoginBtn" onclick="openLogin()">Member Login</button>
 </nav>
 </header>
-
-<!-- Side Navigation Menu (Drawer) -->
-<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <div style="font-size:18px;font-weight:bold;color:#ffd166">📌 Menu</div>
-    <div style="cursor:pointer;font-size:18px;background:rgba(255,255,255,0.2);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center" onclick="toggleSidebar()">✕</div>
-  </div>
-  <ul class="sidebar-links">
-    <li onclick="toggleSidebar();window.scrollTo({top:0,behavior:'smooth'})">🏠 Home Dashboard</li>
-    <li onclick="toggleSidebar();openLogin()">🔑 Member Login / Register</li>
-    <li onclick="toggleSidebar();window.scrollTo({top:500,behavior:'smooth'})">🖨️ Manual Print Portal</li>
-    <li onclick="toggleSidebar();window.scrollTo({top:900,behavior:'smooth'})">📄 Recent Status</li>
-    <li onclick="toggleSidebar();window.scrollTo({top:1400,behavior:'smooth'})">✋ Active Manual Services</li>
-    <li onclick="toggleSidebar();window.scrollTo({top:2000,behavior:'smooth'})">💎 Advance Premium Services</li>
-    <li onclick="toggleSidebar();window.scrollTo({top:2800,behavior:'smooth'})">🆔 Aadhaar & Voter Services</li>
-    <li onclick="toggleSidebar();window.scrollTo({top:3800,behavior:'smooth'})">🚗 Vehicle / RC / DL Services</li>
-    <li onclick="toggleSidebar();window.open('https://t.me','_blank')">✈️ Telegram Support Bot</li>
-  </ul>
-</div>
 
 <!-- Logged-in Top Sub Nav Bar -->
 <div class="top-sub-nav" id="topSubNav">
@@ -297,4 +264,334 @@ footer{background:#0b203f;color:white;text-align:center;padding:25px;line-height
 <div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>ALL EID Aadhaar PDF</b><span>EID / UID se PDF & Aadhaar No.</span></div></div><span class="badge-tag tag-new">NEW</span></div>
 <div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar PDF (Biometric)</b><span>Fingerprint se PDF</span></div></div><span class="badge-tag tag-live">LIVE</span></div>
 <div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar PDF (OTP)</b><span>OTP se download</span></div></div><span class="badge-tag tag-instant">OTP</span></div>
-<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="l
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar Mobile Verify</b></div></div><span class="badge-tag tag-instant">OTP</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar Verify</b></div></div></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar Number Info</b></div></div></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>Aadhaar Family Details</b><div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div></div></div></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🆔</div><div class="list-card-text"><b>NPCI Bank Link Status</b><span>Bank seeding</span></div></div><span class="badge-tag tag-live">LIVE</span></div>
+
+<!-- Voter Category List (4 Services) -->
+<h2>🗳️ Voter <span style="font-size:12px;color:#64748b;font-weight:normal">(4 Services)</span></h2>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🗳️</div><div class="list-card-text"><b>Voter PDF Instant</b><span>No OTP</span></div></div><span class="badge-tag tag-instant">INSTANT</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🗳️</div><div class="list-card-text"><b>Voter PDF (OTP)</b><div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div></div></div><span class="badge-tag tag-instant" style="background:#e0e7ff;color:#4338ca">OTP</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🗳️</div><div class="list-card-text"><b>Voter Mobile Link</b><div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div></div></div><span class="badge-tag tag-hot">HOT</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🗳️</div><div class="list-card-text"><b>Voter Status</b></div></div></div>
+
+<!-- PAN Category List -->
+<h2>💳 PAN <span style="font-size:12px;color:#64748b;font-weight:normal">(3 Services)</span></h2>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🪪</div><div class="list-card-text"><b>Aadhaar to PAN Find</b><div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div></div></div><span class="badge-tag tag-live">100%</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🪪</div><div class="list-card-text"><b>Mobile to PAN Find</b></div></div><span class="badge-tag tag-new">NEW</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🪪</div><div class="list-card-text"><b>PAN Card Info / Details</b><span>PAN se poori details</span></div></div></div>
+
+<!-- Vehicle / RC / DL Category List (7 Services) -->
+<h2>🚗 Vehicle / RC / DL <span style="font-size:12px;color:#64748b;font-weight:normal">(7 Services)</span></h2>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🚗</div><div class="list-card-text"><b>RC PDF</b><span>4 server</span><div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span><span class="server-chip">Server 3</span><span class="server-chip">Server 4</span></div></div></div><span class="badge-tag tag-hot">HOT</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🚗</div><div class="list-card-text"><b>DL PDF</b><span>3 server</span><div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span><span class="server-chip">Server 3</span></div></div></div><span class="badge-tag tag-instant">INSTANT</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🚗</div><div class="list-card-text"><b>RC PDF Premium</b></div></div><span class="badge-tag tag-new">NEW</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🚗</div><div class="list-card-text"><b>RC Manual Instant</b></div></div><span class="badge-tag tag-new">NEW</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🚗</div><div class="list-card-text"><b>Chassis to RC Find</b></div></div><span class="badge-tag tag-new">NEW</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🚗</div><div class="list-card-text"><b>Vehicle Owner Info</b></div></div></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🚗</div><div class="list-card-text"><b>LL Certificate PDF</b></div></div></div>
+
+<!-- Farmer & Schemes Category List (5 Services) -->
+<h2>🚜 Farmer & Schemes <span style="font-size:12px;color:#64748b;font-weight:normal">(5 Services)</span></h2>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🌾</div><div class="list-card-text"><b>DBT Farmer PDF & Status</b><div class="server-chips"><span class="server-chip">Server 1</span><span class="server-chip">Server 2</span></div></div></div><span class="badge-tag tag-live">LIVE</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🌾</div><div class="list-card-text"><b>Farmer Card PDF</b></div></div></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🌾</div><div class="list-card-text"><b>Ayushman (PMJAY) Verify</b></div></div><span class="badge-tag tag-new">NEW</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🌾</div><div class="list-card-text"><b>e-Shram Details</b></div></div></div>
+
+<!-- Ration Category List (3 Services) -->
+<h2>🍲 Ration <span style="font-size:12px;color:#64748b;font-weight:normal">(3 Services)</span></h2>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🍲</div><div class="list-card-text"><b>Ration PDF</b></div></div></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🍲</div><div class="list-card-text"><b>Aadhaar to Ration</b></div></div></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🍲</div><div class="list-card-text"><b>Ration UID Finder</b></div></div></div>
+
+<!-- Exam & Certificate Category List (3 Services) -->
+<h2>📝 Exam & Certificate <span style="font-size:12px;color:#64748b;font-weight:normal">(3 Services)</span></h2>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">📝</div><div class="list-card-text"><b>LL Exam Instant Pass</b></div></div><span class="badge-tag tag-instant">INSTANT</span></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">📝</div><div class="list-card-text"><b>PUC Certificate</b><span>Bike · All Vehicle</span></div></div></div>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">📝</div><div class="list-card-text"><b>Birth Certificate</b><span>Original · All State</span></div></div><span class="badge-tag tag-new">NEW</span></div>
+
+<!-- Lookup Category List -->
+<h2>🔍 Lookup <span style="font-size:12px;color:#64748b;font-weight:normal">(4 Services)</span></h2>
+<div class="list-card" onclick="openLogin()"><div class="list-card-info"><div class="list-card-icon">🔍</div><div class="list-card-text"><b>Lookup Services</b><span>Mobile · PAN · Vehicle · LPG</span></div></div><span class="badge-tag tag-new">NEW</span></div>
+
+<!-- Detailed Footer Info Section -->
+<div class="footer-info-card">
+  <div style="font-weight:bold;font-size:18px;color:#0f2c59;margin-bottom:8px">FastPrintPortal</div>
+  <p style="font-size:13px;color:#64748b;line-height:1.5;margin-bottom:15px">
+    Voter, Aadhaar, PAN, RC/DL, Ration, Birth aur 40+ document services — ek hi wallet se, fast aur secure.
+  </p>
+  
+  <div style="display:flex;gap:8px;margin-bottom:15px">
+    <span class="badge-tag tag-instant" style="position:static">⚡ Instant</span>
+    <span class="badge-tag tag-live" style="position:static">🛡️ Secure Wallet</span>
+    <span class="badge-tag tag-hot" style="position:static;background:#e0f2fe;color:#0284c7">🎧 Telegram Support</span>
+  </div>
+
+  <h4>POPULAR SERVICES</h4>
+  <ul class="footer-links">
+    <li>Dashboard</li>
+    <li>ALL EID Aadhaar PDF</li>
+    <li>My EID Requests</li>
+    <li>Voter PDF Instant</li>
+    <li>RC PDF</li>
+    <li>Birth Certificate</li>
+    <li>Lookup Services</li>
+    <li>PUC Certificate</li>
+  </ul>
+
+  <h4>MY ACCOUNT</h4>
+  <ul class="footer-links">
+    <li>My Profile</li>
+  </ul>
+
+  <h4>OUR PORTALS</h4>
+  <ul class="footer-links">
+    <li>Manual Print Portal</li>
+    <li>Document Print Portal</li>
+    <li>RTPS Print Portal (SOON)</li>
+    <li>Birth Portal (SOON)</li>
+  </ul>
+
+  <h4>HELP & SUPPORT</h4>
+  <div style="background:#0ea5e9;color:white;padding:12px;border-radius:12px;margin-top:10px;text-align:center;font-weight:bold;font-size:14px;cursor:pointer" onclick="window.open('https://t.me','_blank')">
+    ✈️ Telegram Advance Bot<br>
+    <span style="font-size:11px;font-weight:normal;opacity:0.9">Direct service + support</span>
+  </div>
+  <div style="font-size:12px;color:#64748b;margin-top:10px;line-height:1.4">
+    Manual services 24-48 ghante me complete hoti hain. Reject hone par paisa turant wallet me wapas.
+  </div>
+
+  <button class="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Upar jaayein</button>
+</div>
+
+</main>
+
+<footer>
+<b>FastPrintPortal 🇮🇳</b><br>
+Made with ❤️ in India | आपकी डिजिटल सेवाओं का भरोसेमंद साथी<br>
+© 2026 FastPrintPortal. All rights reserved.
+</footer>
+
+<a href="https://t.me" target="_blank" class="float-tg">✈️</a>
+
+<!-- Complete Multi-Tab Login & Registration Modal -->
+<div class="modal" id="modal">
+<div class="box">
+  <div class="modal-header-card">
+    <div class="close-btn" onclick="closeModal()">✕</div>
+    <h2 style="margin:0;font-size:20px">Welcome back to</h2>
+    <h3 style="margin:4px 0 6px;font-size:22px;color:#ffd166">Digital Seva Hub</h3>
+    <p style="margin:0;font-size:12px;opacity:0.9">India का डिजिटल सर्विस पोर्टल</p>
+  </div>
+
+  <div class="modal-body">
+    <div class="yellow-notice-box">
+      <b>📣 ज़रूरी सूचना — ज़रूर पढ़ें:</b><br>
+      Password भूल गए हैं? नीचे <b>Forgot Password</b> पर click करें।
+    </div>
+
+    <!-- Tab Switcher (Login / Register / Forgot) -->
+    <div class="tab-switcher">
+      <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">🔑 Login</button>
+      <button class="tab-btn" id="tab-reg" onclick="switchTab('reg')">👤+ Register</button>
+      <button class="tab-btn" id="tab-forgot" onclick="switchTab('forgot')">🔄 Forgot</button>
+    </div>
+
+    <!-- 1. LOGIN VIEW -->
+    <div id="view-login">
+      <div class="input-label">👤 Mobile / Username / Email</div>
+      <div class="input-wrapper">
+        <span class="input-icon">👤</span>
+        <input id="loginUser" placeholder="Mobile, Username या Email डालें">
+      </div>
+
+      <div class="input-label">🔒 Password</div>
+      <div class="input-wrapper">
+        <span class="input-icon">🔒</span>
+        <input id="loginPass" type="password" placeholder="Password दर्ज करें">
+      </div>
+
+      <button class="primary-btn" onclick="handleLoginSubmit()">🔑 Login करें</button>
+    </div>
+
+    <!-- 2. REGISTER VIEW -->
+    <div id="view-reg" style="display:none">
+      <div class="input-label">👤 पूरा नाम (Full Name)</div>
+      <div class="input-wrapper">
+        <span class="input-icon">👤</span>
+        <input id="regName" placeholder="अपना पूरा नाम लिखें">
+      </div>
+
+      <div class="input-label">📱 मोबाइल नंबर (Mobile Number)</div>
+      <div class="input-wrapper">
+        <span class="input-icon">📱</span>
+        <input id="regPhone" placeholder="10 अंकों का मोबाइल नंबर">
+      </div>
+
+      <div class="input-label">🔒 नया पासवर्ड बनाएं</div>
+      <div class="input-wrapper">
+        <span class="input-icon">🔒</span>
+        <input id="regPass" type="password" placeholder="मजबूत पासवर्ड दर्ज करें">
+      </div>
+
+      <button class="primary-btn" onclick="handleRegisterSubmit()">👤+ नया Account बनाएं</button>
+    </div>
+
+    <!-- 3. FORGOT PASSWORD VIEW -->
+    <div id="view-forgot" style="display:none">
+      <div class="input-label">📱 रजिस्टर्ड मोबाइल नंबर</div>
+      <div class="input-wrapper">
+        <span class="input-icon">📱</span>
+        <input id="forgotPhone" placeholder="अपना रजिस्टर्ड मोबाइल नंबर डालें">
+      </div>
+      <button class="primary-btn" onclick="handleForgotSubmit()">🔄 Password Reset Link भेजें</button>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- Exact Screenshot Announcement Modal (Opens right after Login) -->
+<div class="announcement-modal" id="announcementModal">
+  <div class="announcement-box">
+    <div class="announcement-close" onclick="closeAnnouncement()">✕</div>
+    
+    <div style="text-align:center;margin-bottom:14px">
+      <span style="background:linear-gradient(90deg,#06b6d4,#10b981);color:white;padding:5px 16px;border-radius:20px;font-size:12px;font-weight:bold;display:inline-flex;align-items:center;gap:6px">
+        ⚡ NAYE SERVICES CHALU <span style="background:#ef4444;padding:2px 6px;border-radius:6px;font-size:10px">LIVE</span>
+      </span>
+    </div>
+
+    <div style="font-size:15px;font-weight:bold;text-align:center;margin-bottom:6px">
+      🎉 PUC Certificate Service Ab Chalu Ho Gaya Hai!
+    </div>
+    <p style="font-size:12px;color:#94a3b8;text-align:center;margin-top:0;margin-bottom:16px">
+      Neeche di gayi sabhi services abhi kaam kar rahi hain
+    </p>
+
+    <!-- Service Row 1 -->
+    <div class="service-popup-row">
+      <div class="service-popup-info">
+        <div class="service-popup-icon" style="background:#065f46;color:#34d399">🍃</div>
+        <div>
+          <div style="font-size:13px;font-weight:bold">PUC Certificate</div>
+          <div style="font-size:11px;color:#34d399">✅ Naya — Bike/Car/Truck ₹350</div>
+        </div>
+      </div>
+      <button class="popup-apply-btn" onclick="closeAnnouncement()">Apply →</button>
+    </div>
+
+    <!-- Service Row 2 -->
+    <div class="service-popup-row">
+      <div class="service-popup-info">
+        <div class="service-popup-icon" style="background:#581c87;color:#c084fc">🎓</div>
+        <div>
+          <div style="font-size:13px;font-weight:bold">LL Exam Pass</div>
+          <div style="font-size:11px;color:#c084fc">⏳ Learning Licence — Fast Process</div>
+        </div>
+      </div>
+      <button class="popup-apply-btn" onclick="closeAnnouncement()">Apply →</button>
+    </div>
+
+    <!-- Service Row 3 -->
+    <div class="service-popup-row">
+      <div class="service-popup-info">
+        <div class="service-popup-icon" style="background:#9f1239;color:#fb7185">📄</div>
+        <div>
+          <div style="font-size:13px;font-weight:bold">Voter PDF — Instant</div>
+          <div style="font-size:11px;color:#fb7185">⚡ No OTP — Turant Download</div>
+        </div>
+      </div>
+      <button class="popup-apply-btn" onclick="closeAnnouncement()">Apply →</button>
+    </div>
+
+    <!-- Service Row 4 -->
+    <div class="service-popup-row">
+      <div class="service-popup-info">
+        <div class="service-popup-icon" style="background:#92400e;color:#fbbf24">🔗</div>
+        <div>
+          <div style="font-size:13px;font-weight:bold">Voter Mobile Link — Instant</div>
+          <div style="font-size:11px;color:#fbbf24">⚡ No OTP — Instant Link</div>
+        </div>
+      </div>
+      <button class="popup-apply-btn" onclick="closeAnnouncement()">Apply →</button>
+    </div>
+
+    <!-- Notice Box inside modal -->
+    <div style="background:#112238;border-left:4px solid #facc15;padding:10px;border-radius:8px;font-size:11px;color:#e2e8f0;margin-bottom:16px;line-height:1.4">
+      💡 Koi bhi request <b style="color:#ef4444">Reject</b> hone par pura amount <b style="color:#10b981">Wallet me turant Refund</b> ho jata hai.
+    </div>
+
+    <button style="width:100%;background:linear-gradient(90deg,#06b6d4,#10b981);color:white;padding:12px;border-radius:12px;font-weight:bold;font-size:14px;border:0;cursor:pointer;box-shadow:0 4px 12px rgba(6,182,212,0.3)" onclick="activateUserDashboard()">
+      ✅ Samajh Gaya, Close Karein
+    </button>
+  </div>
+</div>
+
+<script>
+function filterServices(){
+const q=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('.card-box, .status-card, .list-card, .color-card').forEach(card=>{
+card.style.display=card.innerText.toLowerCase().includes(q)?'flex':'none';
+});
+}
+
+function openLogin(){ 
+  document.getElementById('modal').style.display='flex'; 
+}
+
+function closeModal(){ 
+  document.getElementById('modal').style.display='none'; 
+}
+
+function switchTab(tab){
+document.getElementById('view-login').style.display = tab === 'login' ? 'block' : 'none';
+document.getElementById('view-reg').style.display = tab === 'reg' ? 'block' : 'none';
+document.getElementById('view-forgot').style.display = tab === 'forgot' ? 'block' : 'none';
+
+document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+document.getElementById('tab-reg').classList.toggle('active', tab === 'reg');
+document.getElementById('tab-forgot').classList.toggle('active', tab === 'forgot');
+}
+
+function handleLoginSubmit(){
+const user = document.getElementById('loginUser').value;
+const pass = document.getElementById('loginPass').value;
+if(!user || !pass){ alert('कृपया अपनी डिटेल्स दर्ज करें!'); return; }
+closeModal();
+document.getElementById('announcementModal').style.display = 'flex';
+}
+
+function handleRegisterSubmit(){
+const name = document.getElementById('regName').value;
+const phone = document.getElementById('regPhone').value;
+const pass = document.getElementById('regPass').value;
+if(!name || !phone || !pass){ alert('कृपया सभी जानकारी भरें!'); return; }
+alert('🎉 आपका अकाउंट सफलतापूर्वक बन गया है! अब लॉगिन करें।');
+switchTab('login');
+}
+
+function handleForgotSubmit(){
+const phone = document.getElementById('forgotPhone').value;
+if(!phone){ alert('कृपया मोबाइल नंबर दर्ज करें!'); return; }
+alert('🔄 पासवर्ड रीसेट लिंक आपके मोबाइल पर भेज दिया गया है!');
+switchTab('login');
+}
+
+function closeAnnouncement(){
+document.getElementById('announcementModal').style.display = 'none';
+}
+
+function activateUserDashboard(){
+closeAnnouncement();
+document.getElementById('topSubNav').style.display = 'flex';
+document.getElementById('walletPill').style.display = 'inline-flex';
+document.getElementById('headerLoginBtn').textContent = '👤 My Account';
+document.getElementById('headerLoginBtn').style.background = '#22c55e';
+document.getElementById('headerLoginBtn').style.color = 'white';
+}
+</script>
+</body>
+</html>
