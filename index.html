@@ -3,48 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#123b77">
+<meta name="theme-color" content="#0f2c59">
 <title>Digital Seva Hub</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#1b2940}
-header{background:#123b77;color:white;padding:16px}
+body{margin:0;font-family:Arial,sans-serif;background:#f0f4f9;color:#1b2940}
+header{background:linear-gradient(135deg,#0f2c59,#1b4d8e);color:white;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
 nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.logo{font-size:22px;font-weight:bold}
+.logo{font-size:22px;font-weight:bold;letter-spacing:0.5px}
 .logo span{color:#ffd166}
-button{cursor:pointer;border:0;border-radius:8px;padding:12px;font-weight:bold}
-.login{background:#ffd166;color:#123b77}
-.hero{background:linear-gradient(130deg,#123b77,#1976c9);color:white;padding:35px 18px}
+button{cursor:pointer;border:0;border-radius:8px;padding:12px;font-weight:bold;transition:0.2s}
+button:active{transform:scale(0.96)}
+.login{background:#ffd166;color:#0f2c59;box-shadow:0 2px 6px rgba(255,209,102,0.4)}
+
+.hero{background:linear-gradient(135deg,#0f2c59,#1976c9);color:white;padding:40px 18px;text-align:center}
 .inner,main{max-width:1000px;margin:auto}
-.hero h1{font-size:29px}
-.hero p{line-height:1.6}
-#search{width:100%;max-width:550px;padding:14px;border:0;border-radius:8px;font-size:16px}
+.hero h1{font-size:28px;margin-bottom:10px}
+.hero p{font-size:15px;opacity:0.9;line-height:1.5;margin-bottom:20px}
+#search{width:100%;max-width:550px;padding:14px 18px;border:0;border-radius:30px;font-size:16px;box-shadow:0 4px 15px rgba(0,0,0,0.15);outline:none}
+
 main{padding:20px 14px}
-h2{font-size:21px;margin-top:28px}
-.quick,.services{display:grid;gap:12px}
+h2{font-size:20px;margin:25px 0 15px;color:#0f2c59;border-left:4px solid #1976c9;padding-left:10px}
+
+/* Moving Services Marquee Effect */
+.marquee-container{overflow:hidden;white-space:nowrap;width:100%;background:white;padding:12px 0;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.05);margin-bottom:20px}
+.marquee-track{display:inline-block;animation:scrollMarquee 20s linear infinite;padding-left:100%}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{display:inline-flex;align-items:center;gap:8px;background:#eef4ff;padding:10px 18px;margin-right:15px;border-radius:30px;font-weight:bold;color:#0f2c59;font-size:14px;border:1px solid #d0e1fd}
+@keyframes scrollMarquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+.quick,.services{display:grid;gap:15px}
 .quick{grid-template-columns:repeat(4,1fr)}
 .services{grid-template-columns:repeat(3,1fr)}
-.tile,.service,.member{background:white;padding:16px;border-radius:12px;box-shadow:0 2px 10px #0000000c}
-.tile{text-align:center}
-.tile b{display:block;margin-top:8px}
-.emoji{font-size:29px}
-.service h3{font-size:17px}
-.service p{font-size:13px;color:#64748b;line-height:1.5;min-height:38px}
-.service button,.service a.btn-link,.member button{background:#e5efff;color:#123b77;width:100%;display:block;text-align:center;text-decoration:none;font-size:14px;margin-top:8px}
-.member{margin:22px 0}
-.notice{background:#fff2cf;padding:14px;border-radius:9px;font-size:13px;line-height:1.6;margin-top:20px}
-footer{margin-top:28px;background:#102c53;color:white;text-align:center;padding:24px;line-height:1.8}
-.modal{display:none;position:fixed;inset:0;background:#0009;align-items:center;justify-content:center;padding:15px;z-index:10}
-.box{background:white;padding:22px;border-radius:13px;width:100%;max-width:390px}
-.box input{width:100%;padding:12px;margin:9px 0;border:1px solid #ccd4e0;border-radius:8px;font-size:15px}
-.primary{width:100%;background:#123b77;color:white}
-.close{float:right;background:#eee}
+.tile,.service,.member{background:white;padding:18px;border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:transform 0.2s, box-shadow 0.2s}
+.tile:hover,.service:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(15,44,89,0.12)}
+.tile{text-align:center;cursor:pointer}
+.tile b{display:block;margin-top:8px;font-size:14px;color:#0f2c59}
+.emoji{font-size:32px;margin-bottom:5px}
+.service h3{font-size:16px;margin:8px 0;color:#0f2c59}
+.service p{font-size:13px;color:#64748b;line-height:1.5;min-height:38px;margin-bottom:12px}
+.service button,.service a.btn-link,.member button{background:#eef4ff;color:#0f2c59;width:100%;display:block;text-align:center;text-decoration:none;font-size:14px;padding:10px;border-radius:8px;font-weight:bold;border:1px solid #d0e1fd;transition:0.2s}
+.service button:hover,.service a.btn-link:hover{background:#0f2c59;color:white}
+.member{margin:25px 0}
+.notice{background:#fff8e7;border-left:4px solid #ffd166;padding:14px;border-radius:9px;font-size:13px;line-height:1.6;margin-top:20px;color:#5a4a1a}
+
+footer{margin-top:30px;background:#0b203f;color:white;text-align:center;padding:25px;line-height:1.8;font-size:14px}
+
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;padding:15px;z-index:10;backdrop-filter:blur(3px)}
+.box{background:white;padding:24px;border-radius:16px;width:100%;max-width:390px;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+.box input{width:100%;padding:12px;margin:10px 0;border:1px solid #ccd4e0;border-radius:8px;font-size:15px;outline:none}
+.box input:focus{border-color:#1976c9}
+.primary{width:100%;background:#0f2c59;color:white;margin-top:10px}
+.close{float:right;background:#f1f5f9;border-radius:50%;width:32px;height:32px;font-weight:bold;cursor:pointer}
+
 @media(max-width:600px){
  .quick{grid-template-columns:repeat(2,1fr)}
  .services{grid-template-columns:repeat(2,minmax(0,1fr))}
  .service{padding:12px}
- .hero h1{font-size:25px}
- .logo{font-size:19px}
+ .hero h1{font-size:24px}
+ .logo{font-size:18px}
 }
 </style>
 </head>
@@ -60,11 +77,24 @@ footer{margin-top:28px;background:#102c53;color:white;text-align:center;padding:
 <div class="inner">
 <h1>आपकी डिजिटल सेवाएँ, एक ही जगह</h1>
 <p>PAN, रिचार्ज, सरकारी योजनाएँ और डिजिटल सेवाओं के आधिकारिक लिंक पाएँ।</p>
-<input id="search" placeholder="अपनी सेवा खोजें (जैसे: PAN, Aadhaar, Recharge)..." oninput="filterServices()">
+<input id="search" placeholder="अपनी सेवा खोजें (जैसे: PAN, Aadhaar, Bill)..." oninput="filterServices()">
 </div>
 </section>
 
 <main>
+
+<!-- Moving Ticker / Services Marquee -->
+<div class="marquee-container">
+<div class="marquee-track">
+<span class="marquee-item">🪪 Aadhaar & PAN Services</span>
+<span class="marquee-item">📱 Mobile & DTH Recharge</span>
+<span class="marquee-item">💡 Electricity & Utility Bills</span>
+<span class="marquee-item">🏛️ PM Kisan & Govt Schemes</span>
+<span class="marquee-item">🚗 Driving Licence & RC</span>
+<span class="marquee-item">📁 DigiLocker Secured Docs</span>
+</div>
+</div>
+
 <h2>त्वरित सेवाएँ</h2>
 <div class="quick">
 <div class="tile" onclick="document.getElementById('search').value='pan';filterServices()">🪪<b>PAN Card</b></div>
@@ -167,7 +197,7 @@ footer{margin-top:28px;background:#102c53;color:white;text-align:center;padding:
 </div>
 
 <div class="notice">
-<b>ध्यान दें:</b> यह स्वतंत्र डेमो वेबसाइट है, कोई सरकारी वेबसाइट नहीं है। सभी डॉक्यूमेंट सेवाओं के बटन सीधे उनके अधिकृत (Official) पोर्टल पर ले जाते हैं ताकि उपयोगकर्ता सुरक्षित रूप से आवेदन कर सकें।
+<b>ध्यान दें:</b> यह स्वतंत्र डेमो वेबसाइट है, कोई सरकारी वेबसाइट नहीं है। सभी डॉक्यूमेंट सेवाओं के बटन सीधे उनके अधिकृत (Official) पोर्टल पर le jaate hain.
 </div>
 </main>
 
@@ -180,14 +210,14 @@ footer{margin-top:28px;background:#102c53;color:white;text-align:center;padding:
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
 <div class="box">
 <button class="close" onclick="closeModal()">✕</button>
-<h2 id="modalTitle">Member Login</h2>
+<h2 id="modalTitle" style="color:#0f2c59;margin-top:0">Member Login</h2>
 <div id="formArea">
 <input id="memberContact" placeholder="मोबाइल नंबर या ईमेल">
 <input id="memberPassword" type="password" placeholder="पासवर्ड">
 <button class="primary" onclick="demoLogin()">Login</button>
 </div>
-<p id="switch">नया अकाउंट? <a href="#" onclick="registerMode();return false">Register करें</a></p>
-<p style="font-size:12px;color:#64748b;margin-top:10px">यह डेमो है। कोई वास्तविक अकाउंट या डेटा सेव नहीं होता।</p>
+<p id="switch" style="font-size:14px;text-align:center;margin-top:15px">नया अकाउंट? <a href="#" onclick="registerMode();return false">Register करें</a></p>
+<p style="font-size:12px;color:#64748b;margin-top:10px;text-align:center">यह डेमो है। कोई वास्तविक अकाउंट या डेटा सेव नहीं होता।</p>
 </div>
 </div>
 
@@ -200,7 +230,7 @@ card.style.display=card.dataset.search.includes(q)?'block':'none';
 }
 function info(title,message){
 document.getElementById('modalTitle').textContent=title;
-document.getElementById('formArea').innerHTML='<p>'+message+'</p><button class="primary" onclick="closeModal()">ठीक है</button>';
+document.getElementById('formArea').innerHTML='<p style="line-height:1.6">'+message+'</p><button class="primary" onclick="closeModal()">ठीक है</button>';
 document.getElementById('switch').textContent='';
 document.getElementById('modal').style.display='flex';
 }
