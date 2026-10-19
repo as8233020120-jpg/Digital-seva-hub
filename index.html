@@ -8,23 +8,26 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#0b1d3a;color:#ffffff}
-header{background:linear-gradient(135deg,#0b1d3a,#132f58);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);position:sticky;top:0;z-index:50}
-.brand-logo-top{display:flex;align-items:center;gap:8px;font-weight:bold;font-size:15px;color:#ffd166}
-.home-btn{background:#193563;color:white;border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+header{background:linear-gradient(135deg,#0b1d3a,#132f58);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);position:sticky;top:0;z-index:50}
+.brand-logo-top{display:flex;align-items:center;gap:8px}
+.brand-logo-top img{height:36px;border-radius:6px}
+.home-btn{background:#193563;color:white;border:1px solid rgba(255,255,255,0.2);padding:7px 14px;border-radius:10px;font-size:13px;font-weight:bold;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
 
 .container{max-width:480px;margin:auto;padding:16px}
 
-/* Main Hero Card */
-.hero-card{background:linear-gradient(180deg,#132b50,#0d1f3b);border:1px solid #1f3a6b;border-radius:24px;padding:24px 16px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin-bottom:20px}
-.portal-logo-img{font-size:32px;font-weight:bold;color:#ffd166;margin-bottom:12px}
-.hero-card h1{font-size:22px;margin:10px 0 6px;color:#ffffff}
-.hero-card h1 span{color:#ffd166}
-.hero-card p{font-size:13px;color:#cbd5e1;line-height:1.5;margin-bottom:20px}
+/* Main Hero Card with Original Logo */
+.hero-card{background:linear-gradient(180deg,#132b50,#0d1f3b);border:1px solid #1f3a6b;border-radius:24px;padding:20px 16px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin-bottom:20px}
+.main-logo-box{background:#0a172e;border:2px solid #1f3a6b;padding:12px;border-radius:16px;display:inline-block;margin-bottom:15px;box-shadow:0 4px 15px rgba(0,0,0,0.3)}
+.main-logo-box img{max-width:190px;height:auto;display:block;margin:auto}
 
-.feature-pill{background:rgba(25,53,99,0.7);border:1px solid rgba(255,255,255,0.1);color:#e2e8f0;padding:12px 16px;border-radius:12px;margin-bottom:10px;font-size:13px;font-weight:bold;display:flex;align-items:center;gap:10px;text-align:left}
+.hero-card h1{font-size:22px;margin:8px 0 6px;color:#ffffff}
+.hero-card h1 span{color:#ffd166}
+.hero-card p{font-size:13px;color:#cbd5e1;line-height:1.5;margin-bottom:18px}
+
+.feature-pill{background:rgba(25,53,99,0.7);border:1px solid rgba(255,255,255,0.1);color:#e2e8f0;padding:11px 16px;border-radius:12px;margin-bottom:10px;font-size:13px;font-weight:bold;display:flex;align-items:center;gap:10px;text-align:left}
 .feature-pill span{color:#fbbf24;font-size:16px}
 
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
 .stat-box{background:#11223f;border:1px solid #1f3a6b;padding:12px 8px;border-radius:14px;text-align:center}
 .stat-box b{font-size:16px;color:#ffffff;display:block}
 .stat-box span{font-size:11px;color:#94a3b8}
@@ -80,16 +83,19 @@ footer a{color:#38bdf8;text-decoration:none}
 
 <header>
   <div class="brand-logo-top">
-    <span>🇮🇳</span> PDF PRINT PORTAL
+    <img src="https://i.ibb.co/30zH9p5/fastprintportal-logo.png" alt="FAST Print Portal" onerror="this.style.display='none';document.getElementById('fallbackText').style.display='inline'">
+    <span id="fallbackText" style="display:none;font-weight:bold;color:#ffd166">🇮🇳 PDF PRINT PORTAL</span>
   </div>
   <a href="#" class="home-btn">🏠 Home</a>
 </header>
 
 <div class="container">
 
-  <!-- Top Hero Card (From Screenshot 1) -->
+  <!-- Top Hero Card with Original Logo -->
   <div class="hero-card">
-    <div class="portal-logo-img">🚀 FAST Print Portal</div>
+    <div class="main-logo-box">
+      <img src="https://i.ibb.co/30zH9p5/fastprintportal-logo.png" alt="Logo" onerror="this.innerHTML='<span style=\'color:#ffd166;font-size:20px;font-weight:bold\'>🚀 FAST Print Portal</span>'">
+    </div>
     <h1>Welcome back to <br><span>PDF PRINT PORTAL</span></h1>
     <p>India का सबसे तेज़ Print Portal — Aadhaar, PAN, Voter, RC, DL और 12+ services instant download के साथ।</p>
     
@@ -105,7 +111,7 @@ footer a{color:#38bdf8;text-decoration:none}
     </div>
   </div>
 
-  <!-- Member Login Form Card (From Screenshots 2, 3) -->
+  <!-- Member Login Form Card -->
   <div class="login-card" id="loginSection">
     <div class="login-title">👤 Member Login</div>
     <div class="login-sub">अपने अकाउंट में Login करें</div>
@@ -124,36 +130,36 @@ footer a{color:#38bdf8;text-decoration:none}
     <div class="input-label">👤 Mobile / Username / Email — कोई भी एक</div>
     <div class="input-box">
       <span class="input-icon">👤</span>
-      <input placeholder="Mobile, Username या Email डालें">
+      <input id="loginInput" placeholder="Mobile, Username या Email डालें">
     </div>
 
     <div class="chips-row">
-      <span class="mini-chip">📱 9876543210</span>
-      <span class="mini-chip">👤 username</span>
-      <span class="mini-chip">✉️ user@gmail.com</span>
+      <span class="mini-chip" onclick="document.getElementById('loginInput').value='9876543210'">📱 9876543210</span>
+      <span class="mini-chip" onclick="document.getElementById('loginInput').value='username'">👤 username</span>
+      <span class="mini-chip" onclick="document.getElementById('loginInput').value='user@gmail.com'">✉️ user@gmail.com</span>
     </div>
 
     <div class="input-label">🔒 Password</div>
     <div class="input-box">
       <span class="input-icon">🔒</span>
-      <input type="password" placeholder="Password दर्ज करें">
+      <input type="password" id="loginPass" placeholder="Password दर्ज करें">
     </div>
 
     <!-- Bot Protection Captcha Box -->
     <div class="captcha-container">
-      <div class="captcha-math">6 + 3 = ?</div>
+      <div class="captcha-math" id="captchaText">6 + 3 = ?</div>
       <div style="display:flex;justify-content:center;align-items:center">
-        <input class="captcha-input" placeholder="जवाब">
-        <button class="refresh-btn">🔄</button>
+        <input class="captcha-input" id="captchaInput" placeholder="जवाब">
+        <button class="refresh-btn" onclick="refreshCaptcha()">🔄</button>
       </div>
       <div class="captcha-hint">🤖 Bot Protection — सही जवाब दें</div>
     </div>
 
-    <button class="primary-btn" onclick="alert('Login Successful! Welcome to Dashboard')">🔒 पहले Captcha Verify करें</button>
-    <button class="primary-btn reg-btn" onclick="alert('Registration form open')">👤+ नया Account (FREE)</button>
+    <button class="primary-btn" onclick="handleLogin()">🔒 Login करें</button>
+    <button class="primary-btn reg-btn" onclick="alert('Registration form open: नया खाता बनाने के लिए Telegram Bot से संपर्क करें।')">👤+ नया Account (FREE)</button>
   </div>
 
-  <!-- Join Channel Box (From Screenshot 4, 6) -->
+  <!-- Join Channel Box -->
   <div class="info-banner-green">
     <div class="banner-title">📢 हमसे ज़रूर जुड़ें</div>
     <div class="banner-desc">Portal का link बदलने पर नया address सबसे पहले यहीं मिलता है।</div>
@@ -168,16 +174,21 @@ footer a{color:#38bdf8;text-decoration:none}
     <div style="font-size:11px;margin-top:6px;opacity:0.9">इस Website को save कर के रखें — यह हमेशा open होगी</div>
   </div>
 
-  <!-- Forgot Password Section (From Screenshot 5, 6) -->
+  <!-- Forgot Password Section -->
   <div class="login-card" id="forgotSection">
     <div class="login-title" style="color:#b45309">🔑 Password भूल गए? अब बिल्कुल आसान</div>
     <div class="yellow-notice" style="background:#fef3c7;border-color:#fde047">
       <b>Forgot Password</b> पर click करें → अपना <b>Mobile Number या Email ID</b> डालें → OTP आपके Email और Telegram दोनों पर आएगा → नया password set करें → तुरंत Login करें। यह सुविधा अब पूरी तरह ठीक कर दी गई है।
     </div>
-    <button class="primary-btn" style="background:linear-gradient(135deg,#f59e0b,#d97706)" onclick="alert('OTP sent to Email and Telegram!')">🔑 Forgot Password</button>
+    <div class="input-label">📱 रजिस्टर्ड मोबाइल नंबर या ईमेल</div>
+    <div class="input-box">
+      <span class="input-icon">📱</span>
+      <input placeholder="Mobile या Email डालें">
+    </div>
+    <button class="primary-btn" style="background:linear-gradient(135deg,#f59e0b,#d97706)" onclick="alert('OTP आपके Email और Telegram पर भेज दिया गया है!')">🔑 Password Reset OTP भेजें</button>
   </div>
 
-  <!-- Final Notice & Support (From Screenshot 7) -->
+  <!-- Final Notice & Support -->
   <div class="info-banner-yellow">
     <div class="banner-title">ℹ️ महत्वपूर्ण सूचना</div>
     <div class="banner-desc">
@@ -192,6 +203,36 @@ footer a{color:#38bdf8;text-decoration:none}
   </footer>
 
 </div>
+
+<script>
+let num1 = 6, num2 = 3, expectedAns = 9;
+function refreshCaptcha(){
+  num1 = Math.floor(Math.random() * 8) + 1;
+  num2 = Math.floor(Math.random() * 8) + 1;
+  expectedAns = num1 + num2;
+  document.getElementById('captchaText').textContent = `${num1} + ${num2} = ?`;
+  document.getElementById('captchaInput').value = '';
+}
+
+function handleLogin(){
+  const user = document.getElementById('loginInput').value;
+  const pass = document.getElementById('loginPass').value;
+  const captcha = document.getElementById('captchaInput').value;
+
+  if(!user || !pass){
+    alert('कृपया अपना Mobile/Email और Password दर्ज करें!');
+    return;
+  }
+  if(parseInt(captcha) !== expectedAns){
+    alert('गलत Captcha जवाब! कृपया सही जोड़ (Math Answer) लिखें।');
+    refreshCaptcha();
+    return;
+  }
+
+  alert('🎉 Login Successful! आपका स्वागत है PDF Print Portal पर।');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
 
 </body>
 </html>
