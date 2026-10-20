@@ -3,316 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF PRINT PORTAL - Member Login</title>
-    <!-- FontAwesome for Icons -->
+    <title>PDF PRINT PORTAL - Member Login & Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-gradient: linear-gradient(180deg, #101638 0%, #0d3b66 50%, #081d34 100%);
-            --card-bg: #ffffff;
-            --primary-blue: #2563eb;
+            --bg-gradient: linear-gradient(180deg, #0b1120 0%, #111827 50%, #0f172a 100%);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --primary-accent: #3b82f6;
             --accent-yellow: #f59e0b;
             --green-btn: #10b981;
             --telegram-blue: #06b6d4;
-            --notice-bg: #fffbeb;
-            --notice-border: #f59e0b;
-            --dark-card: #1e293b;
-            --text-main: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
             background: var(--bg-gradient);
-            color: #fff;
+            color: var(--text-light);
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             padding: 15px;
         }
 
         .container {
             width: 100%;
-            max-width: 450px;
+            max-width: 480px;
             margin: 0 auto;
         }
 
-        /* Top Header Card */
-        .hero-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .nav-header {
+        /* Top Header Navigation Tabs */
+        .top-nav {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            overflow-x: auto;
+            gap: 8px;
+            padding-bottom: 10px;
             margin-bottom: 15px;
+            scrollbar-width: none;
         }
+        .top-nav::-webkit-scrollbar { display: none; }
 
-        .logo-text {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #fff;
-        }
-
-        .home-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            padding: 6px 14px;
+        .nav-tab {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 8px 14px;
             border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-
-        .hero-title {
-            font-size: 1.4rem;
-            margin: 10px 0;
-            color: #fff;
-        }
-
-        .hero-title span {
-            color: var(--accent-yellow);
-            display: block;
-        }
-
-        .hero-subtitle {
-            font-size: 0.9rem;
-            color: #cbd5e1;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .feature-badge {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px 15px;
-            border-radius: 25px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-
-        .feature-badge i {
-            margin-right: 10px;
-            color: var(--accent-yellow);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .stat-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 5px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .stat-box h4 {
-            font-size: 1.1rem;
-            color: #fff;
-        }
-
-        .stat-box p {
-            font-size: 0.75rem;
-            color: #cbd5e1;
-        }
-
-        /* Main Form Card */
-        .login-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 25px 20px;
-            color: var(--text-main);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .login-header i {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 5px;
-        }
-
-        .login-header h2 {
-            font-size: 1.5rem;
-            color: #0f172a;
-        }
-
-        .login-header p {
-            font-size: 0.85rem;
-            color: #64748b;
-        }
-
-        /* Notice Box */
-        .notice-box {
-            background: var(--notice-bg);
-            border-left: 4px solid var(--notice-border);
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            margin-bottom: 20px;
-            color: #78350f;
-            line-height: 1.4;
-        }
-
-        .notice-box h4 {
-            margin-bottom: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: 0.3s;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        .notice-box a {
-            color: #047857;
+        .nav-tab.active {
+            background: var(--primary-accent);
+            color: #fff;
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Hero Banner */
+        .hero-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-title {
+            font-size: 1.2rem;
             font-weight: bold;
-        }
-
-        /* Form Controls */
-        .tab-group {
+            color: var(--accent-yellow);
+            margin-bottom: 8px;
             display: flex;
-            background: #f1f5f9;
-            padding: 4px;
-            border-radius: 10px;
-            margin-bottom: 15px;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .tab-btn {
-            flex: 1;
+        .hero-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .badge-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .badge-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 8px;
-            border: none;
-            background: transparent;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            color: #64748b;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .tab-btn.active {
-            background: #fff;
-            color: var(--primary-blue);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        .badge-item i { color: var(--accent-yellow); }
+
+        .stats-counter {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 10px;
         }
 
-        .form-group {
+        .stat-card {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 10px 5px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-card h3 { font-size: 1.1rem; color: #fff; }
+        .stat-card p { font-size: 0.7rem; color: var(--text-muted); }
+
+        /* Page Content Screens */
+        .page-content { display: none; }
+        .page-content.active { display: block; }
+
+        /* Card Container Styling */
+        .content-card {
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 20px;
             margin-bottom: 15px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
+        .notice-banner {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--accent-yellow);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            color: #fcd34d;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        /* Input Controls */
+        .form-group { margin-bottom: 15px; }
         .form-group label {
             display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.82rem;
+            color: var(--text-muted);
             margin-bottom: 6px;
-            color: #334155;
         }
 
-        .input-wrapper {
+        .input-box {
             position: relative;
             display: flex;
             align-items: center;
         }
 
-        .input-wrapper i.left-icon {
+        .input-box i {
             position: absolute;
             left: 12px;
-            color: #94a3b8;
+            color: var(--text-muted);
         }
 
-        .input-wrapper i.toggle-pwd {
-            position: absolute;
+        .input-box i.toggle-eye {
+            left: auto;
             right: 12px;
             cursor: pointer;
-            color: #94a3b8;
         }
 
         .form-control {
             width: 100%;
             padding: 12px 12px 12px 38px;
-            border: 1px solid #cbd5e1;
+            background: #0f172a;
+            border: 1px solid #334155;
             border-radius: 10px;
+            color: #fff;
             font-size: 0.9rem;
             outline: none;
-            transition: all 0.2s;
         }
 
         .form-control:focus {
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            border-color: var(--primary-accent);
         }
 
-        .quick-options {
-            display: flex;
-            gap: 5px;
-            margin-top: 6px;
-            font-size: 0.75rem;
-        }
-
-        .quick-tag {
-            background: #f1f5f9;
-            padding: 3px 8px;
-            border-radius: 5px;
-            color: #475569;
-        }
-
-        /* Captcha Box */
-        .captcha-box {
-            background: var(--dark-card);
-            color: #fff;
-            padding: 12px;
+        /* Captcha Styling */
+        .captcha-container {
+            background: #0f172a;
+            padding: 10px 14px;
             border-radius: 10px;
-            margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-bottom: 15px;
+            border: 1px solid #334155;
         }
 
-        .captcha-math {
-            font-size: 1.1rem;
+        .captcha-text {
             font-weight: bold;
-            background: rgba(255,255,255,0.1);
-            padding: 6px 12px;
-            border-radius: 6px;
+            font-size: 1.1rem;
             letter-spacing: 2px;
+            color: var(--accent-yellow);
         }
 
         .captcha-input {
             width: 80px;
             padding: 8px;
-            border-radius: 6px;
+            background: #1e293b;
             border: 1px solid #475569;
-            background: #0f172a;
+            border-radius: 6px;
             color: #fff;
             text-align: center;
-        }
-
-        .refresh-btn {
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: #fff;
-            padding: 8px;
-            border-radius: 6px;
-            cursor: pointer;
         }
 
         /* Buttons */
@@ -322,7 +243,7 @@
             border: none;
             border-radius: 10px;
             font-weight: bold;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -330,59 +251,51 @@
             gap: 8px;
             text-decoration: none;
             margin-bottom: 10px;
+            transition: 0.2s;
         }
 
-        .btn-primary { background: #818cf8; color: #fff; }
-        .btn-warning { background: #fef3c7; color: #b45309; }
-        .btn-success { background: #d1fae5; color: #047857; }
-        .btn-whatsapp { background: var(--green-btn); color: #fff; }
+        .btn-blue { background: var(--primary-accent); color: #fff; }
+        .btn-yellow { background: var(--accent-yellow); color: #000; }
+        .btn-green { background: var(--green-btn); color: #fff; }
         .btn-telegram { background: var(--telegram-blue); color: #fff; }
 
-        /* External Links Box */
-        .social-box {
-            background: var(--dark-card);
+        /* Dashboard Shortcut Grid */
+        .grid-menu {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .menu-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 15px;
             border-radius: 12px;
-            margin-top: 15px;
             text-align: center;
-            color: #fff;
+            cursor: pointer;
         }
 
-        .social-box h4 {
-            font-size: 0.95rem;
-            margin-bottom: 5px;
-        }
+        .menu-box i { font-size: 1.5rem; color: var(--primary-accent); margin-bottom: 6px; }
+        .menu-box h4 { font-size: 0.85rem; }
 
-        .social-box p {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            margin-bottom: 12px;
-        }
-
+        /* Backup Card */
         .backup-card {
-            background: #0891b2;
-            color: #fff;
-            padding: 12px;
+            background: linear-gradient(135deg, #0284c7, #0f766e);
+            padding: 15px;
             border-radius: 12px;
             text-align: center;
             margin-top: 15px;
         }
 
-        .backup-card h3 {
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
+        .backup-card h3 { font-size: 0.95rem; }
+        .backup-card p { font-size: 0.75rem; opacity: 0.9; }
 
-        .backup-card p {
-            font-size: 0.75rem;
-            opacity: 0.9;
-        }
-
-        .footer {
+        .footer-text {
             text-align: center;
             font-size: 0.75rem;
-            color: #94a3b8;
-            margin-top: 20px;
+            color: var(--text-muted);
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -390,132 +303,244 @@
 
 <div class="container">
 
-    <!-- Top Header Banner -->
-    <div class="hero-card">
-        <div class="nav-header">
-            <div class="logo-text"><i class="fa-solid fa-print"></i> PDF PRINT PORTAL</div>
-            <a href="#" class="home-btn"><i class="fa-solid fa-house"></i> Home</a>
-        </div>
-        <h1 class="hero-title">Welcome back to <span>PDF PRINT PORTAL</span></h1>
-        <p class="hero-subtitle">India का सबसे तेज़ Print Portal — Aadhaar, PAN, Voter, RC, DL और 12+ services instant download के साथ।</p>
-        
-        <div class="feature-badge"><i class="fa-solid fa-bolt"></i> Instant Download</div>
-        <div class="feature-badge"><i class="fa-solid fa-indian-rupee-sign"></i> Lowest Price</div>
-        <div class="feature-badge"><i class="fa-solid fa-shield-halved"></i> 100% Secure</div>
-        <div class="feature-badge"><i class="fa-solid fa-rotate-left"></i> Fail पर Auto Refund</div>
+    <!-- Horizontal Navigation Bar -->
+    <div class="top-nav">
+        <div class="nav-tab active" onclick="switchPage('page-login', this)"><i class="fa-solid fa-right-to-bracket"></i> Login Desk</div>
+        <div class="nav-tab" onclick="switchPage('page-dashboard', this)"><i class="fa-solid fa-gauge"></i> Dashboard</div>
+        <div class="nav-tab" onclick="switchPage('page-aadhaar', this)"><i class="fa-solid fa-id-card"></i> Aadhaar Print</div>
+        <div class="nav-tab" onclick="switchPage('page-pan', this)"><i class="fa-solid fa-address-card"></i> PAN Services</div>
+        <div class="nav-tab" onclick="switchPage('page-wallet', this)"><i class="fa-solid fa-wallet"></i> Wallet Recharge</div>
+        <div class="nav-tab" onclick="switchPage('page-support', this)"><i class="fa-solid fa-headset"></i> Support</div>
+        <div class="nav-tab" onclick="switchPage('page-backup', this)"><i class="fa-solid fa-shield"></i> Backup Link</div>
+    </div>
 
-        <div class="stats-grid">
-            <div class="stat-box">
-                <h4>90,000+</h4>
+    <!-- Header Hero Banner -->
+    <div class="hero-card">
+        <div class="logo-title">
+            <i class="fa-solid fa-print"></i> PDF PRINT PORTAL
+        </div>
+        <p class="hero-desc">India का सबसे तेज़ Print Portal — Instant Download and Correction Desk</p>
+        
+        <div class="badge-grid">
+            <div class="badge-item"><i class="fa-solid fa-bolt"></i> Instant Download</div>
+            <div class="badge-item"><i class="fa-solid fa-indian-rupee-sign"></i> Lowest Price</div>
+            <div class="badge-item"><i class="fa-solid fa-shield-halved"></i> 100% Secure</div>
+            <div class="badge-item"><i class="fa-solid fa-rotate-left"></i> Auto Refund</div>
+        </div>
+
+        <div class="stats-counter">
+            <div class="stat-card">
+                <h3>90,000+</h3>
                 <p>Members</p>
             </div>
-            <div class="stat-box">
-                <h4>1 Lakh+</h4>
+            <div class="stat-card">
+                <h3>1 Lakh+</h3>
                 <p>Documents</p>
             </div>
-            <div class="stat-box">
-                <h4>24x7</h4>
+            <div class="stat-card">
+                <h3>24x7</h3>
                 <p>Support</p>
             </div>
         </div>
     </div>
 
-    <!-- Main Login Card -->
-    <div class="login-card">
-        <div class="login-header">
-            <i class="fa-solid fa-circle-user"></i>
-            <h2>Member Login</h2>
-            <p>अपने अकाउंट में Login करें</p>
-        </div>
+    <!-- PAGE 1: LOGIN DESK -->
+    <div id="page-login" class="page-content active">
+        <div class="content-card">
+            <h2 style="text-align: center; margin-bottom: 12px; font-size: 1.3rem;"><i class="fa-solid fa-circle-user"></i> Member Login</h2>
+            
+            <div class="notice-banner">
+                <i class="fa-solid fa-bullhorn"></i> <b>ज़रूरी सूचना:</b> Password भूलने पर Forgot Password से OTP प्राप्त करें। Official Updates के लिए WhatsApp/Telegram जॉइन करें।
+            </div>
 
-        <!-- Notice -->
-        <div class="notice-box">
-            <h4><i class="fa-solid fa-bullhorn"></i> ज़रूरी सूचना — ज़रूर पढ़ें</h4>
-            <p><b>Password भूल गए हैं?</b> <a href="#">Forgot Password</a> पर click करें, अपना Mobile Number या Email ID डालें, OTP से नया password बनाएं और तुरंत Portal खोलें।</p>
-            <p style="margin-top: 6px;"><b>हमारा website address बदलता रहता है</b> — नया link सबसे पहले पाने के लिए <a href="#">WhatsApp Channel</a> और <a href="#">Telegram Bot</a> से ज़रूर जुड़ें।</p>
-        </div>
+            <form onsubmit="return false;">
+                <div class="form-group">
+                    <label>Mobile / Username / Email</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" class="form-control" placeholder="Mobile, Username या Email डालें">
+                    </div>
+                </div>
 
-        <!-- Tabs -->
-        <div class="tab-group">
-            <button class="tab-btn active"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
-            <button class="tab-btn"><i class="fa-solid fa-key"></i> Forgot Password?</button>
-        </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="passInput" class="form-control" placeholder="Password दर्ज करें">
+                        <i class="fa-solid fa-eye toggle-eye" onclick="togglePass()"></i>
+                    </div>
+                </div>
 
-        <!-- Form -->
-        <form onsubmit="return false;">
+                <div class="captcha-container">
+                    <span class="captcha-text" id="mathProblem">7 + 2 = ?</span>
+                    <input type="text" class="captcha-input" placeholder="उत्तर">
+                    <button type="button" class="btn-blue" style="padding:6px 10px; width:auto; margin:0;" onclick="genMath()"><i class="fa-solid fa-rotate"></i></button>
+                </div>
+
+                <button class="btn btn-blue"><i class="fa-solid fa-right-to-bracket"></i> Login Portal</button>
+                <button class="btn btn-yellow" onclick="switchPage('page-support', null)"><i class="fa-solid fa-key"></i> Forgot Password?</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PAGE 2: DASHBOARD OVERVIEW -->
+    <div id="page-dashboard" class="page-content">
+        <div class="content-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h3><i class="fa-solid fa-user-check"></i> Welcome, Retailer</h3>
+                <span style="background:var(--green-btn); padding:4px 8px; border-radius:6px; font-size:0.75rem;">Active</span>
+            </div>
+            
+            <div style="background:#0f172a; padding:15px; border-radius:12px; margin-bottom:15px; border:1px solid #334155;">
+                <p style="font-size:0.8rem; color:var(--text-muted);">Current Wallet Balance</p>
+                <h2 style="color:var(--accent-yellow); font-size:1.8rem;">₹ 250.00</h2>
+            </div>
+
+            <div class="grid-menu">
+                <div class="menu-box" onclick="switchPage('page-aadhaar', null)">
+                    <i class="fa-solid fa-id-card"></i>
+                    <h4>Aadhaar Print</h4>
+                </div>
+                <div class="menu-box" onclick="switchPage('page-pan', null)">
+                    <i class="fa-solid fa-address-card"></i>
+                    <h4>PAN Apply</h4>
+                </div>
+                <div class="menu-box" onclick="switchPage('page-wallet', null)">
+                    <i class="fa-solid fa-qrcode"></i>
+                    <h4>Add Money</h4>
+                </div>
+                <div class="menu-box" onclick="switchPage('page-support', null)">
+                    <i class="fa-solid fa-headset"></i>
+                    <h4>Help Center</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: AADHAAR ADVANCED PRINT -->
+    <div id="page-aadhaar" class="page-content">
+        <div class="content-card">
+            <h3><i class="fa-solid fa-id-card"></i> Aadhaar Advanced Print</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:15px;">Upload E-Aadhaar PDF for Instant High Quality Auto Crop Card</p>
+
             <div class="form-group">
-                <label>Mobile / Username / Email — कोई भी एक</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-user left-icon"></i>
-                    <input type="text" class="form-control" placeholder="Mobile, Username या Email डालें">
-                </div>
-                <div class="quick-options">
-                    <span class="quick-tag"><i class="fa-solid fa-phone"></i> 9876543210</span>
-                    <span class="quick-tag"><i class="fa-solid fa-user"></i> username</span>
-                </div>
+                <label>Select Aadhaar PDF File</label>
+                <input type="file" class="form-control" style="padding:10px;">
             </div>
 
             <div class="form-group">
-                <label>Password</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-lock left-icon"></i>
-                    <input type="password" id="pwdInput" class="form-control" placeholder="Password दर्ज करें">
-                    <i class="fa-solid fa-eye toggle-pwd" onclick="togglePassword()"></i>
+                <label>E-Aadhaar Password (Format: FIRST4LETTERS1996)</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="text" class="form-control" placeholder="e.g. ANKI1996">
                 </div>
             </div>
 
-            <!-- Bot Protection (Math Captcha) -->
-            <div class="captcha-box">
-                <div class="captcha-math" id="captchaQuestion">6 + 3 = ?</div>
-                <input type="text" class="captcha-input" placeholder="जवाब">
-                <button type="button" class="refresh-btn" onclick="generateCaptcha()"><i class="fa-solid fa-rotate"></i></button>
+            <button class="btn btn-green"><i class="fa-solid fa-print"></i> Generate Pocket Card (Charge: ₹ 5)</button>
+        </div>
+    </div>
+
+    <!-- PAGE 4: PAN SERVICES -->
+    <div id="page-pan" class="page-content">
+        <div class="content-card">
+            <h3><i class="fa-solid fa-address-card"></i> PAN Apply & Correction Desk</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:15px;">Fast Instant PAN Correction / New Application Portal</p>
+
+            <div class="form-group">
+                <label>Select Application Type</label>
+                <select class="form-control" style="padding-left:12px;">
+                    <option>PAN Card Correction / Update</option>
+                    <option>New PAN Card Application</option>
+                </select>
             </div>
 
-            <button class="btn btn-primary"><i class="fa-solid fa-lock"></i> पहले Captcha Verify करें</button>
-            <button class="btn btn-warning"><i class="fa-solid fa-key"></i> Forgot Password</button>
-            <button class="btn btn-success"><i class="fa-solid fa-user-plus"></i> + नया Account (FREE)</button>
-        </form>
+            <div class="form-group">
+                <label>Enter Aadhaar Number</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-fingerprint"></i>
+                    <input type="text" class="form-control" placeholder="12 Digit Aadhaar Number">
+                </div>
+            </div>
 
-        <!-- Social Section -->
-        <div class="social-box">
-            <h4><i class="fa-solid fa-bell"></i> हमसे ज़रूर जुड़ें</h4>
-            <p>Portal का link बदलने पर नया address सबसे पहले यहीं मिलता है।</p>
-            <a href="#" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp Channel Join करें</a>
+            <button class="btn btn-blue"><i class="fa-solid fa-paper-plane"></i> Proceed Application</button>
+        </div>
+    </div>
+
+    <!-- PAGE 5: WALLET RECHARGE -->
+    <div id="page-wallet" class="page-content">
+        <div class="content-card" style="text-align:center;">
+            <h3><i class="fa-solid fa-qrcode"></i> Fast Auto Wallet Top-up</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:15px;">Scan QR via PhonePe / GPay / Paytm for instant credit</p>
+
+            <div style="background:#fff; padding:15px; display:inline-block; border-radius:12px; margin-bottom:15px;">
+                <i class="fa-solid fa-qrcode" style="font-size:8rem; color:#000;"></i>
+            </div>
+
+            <div class="form-group">
+                <input type="number" class="form-control" value="100" style="text-align:center; padding-left:12px;">
+            </div>
+
+            <button class="btn btn-green"><i class="fa-solid fa-bolt"></i> Generate Dynamic Payment QR</button>
+        </div>
+    </div>
+
+    <!-- PAGE 6: SUPPORT & SOCIAL -->
+    <div id="page-support" class="page-content">
+        <div class="content-card">
+            <h3><i class="fa-solid fa-headset"></i> Customer Support Desk</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:15px;">24x7 Automated Password Reset & Helpline Links</p>
+
+            <a href="#" class="btn btn-green"><i class="fa-brands fa-whatsapp"></i> Join Official WhatsApp Channel</a>
             <a href="#" class="btn btn-telegram"><i class="fa-brands fa-telegram"></i> Telegram Bot — @Print_Portal_Bot</a>
         </div>
+    </div>
 
-        <!-- Backup Address Notice -->
-        <div class="backup-card">
-            <h3><i class="fa-solid fa-triangle-exclamation"></i> अगर कभी PORTAL OPEN न हो तो</h3>
-            <h2 style="text-decoration: underline; font-size: 1.2rem; margin: 4px 0;">printfastportal.net</h2>
-            <p>इस Website को save कर के रखें — यह हमेशा open होगी</p>
+    <!-- PAGE 7: BACKUP LINK NOTICE -->
+    <div id="page-backup" class="page-content">
+        <div class="content-card">
+            <div class="backup-card">
+                <h3><i class="fa-solid fa-shield-halved"></i> Backup Link Desk</h3>
+                <h2 style="margin:10px 0; text-decoration:underline;">printfastportal.net</h2>
+                <p>Bookmark this link — Use this domain whenever main domain is slow or updating.</p>
+            </div>
         </div>
+    </div>
 
-        <div class="footer">
-            <p>© 2026 PDF PRINT PORTAL. All Rights Reserved.</p>
-            <p>Backup Website: <b>printfastportal.net</b> | Telegram: <b>@Print_Portal_Bot</b></p>
-        </div>
+    <!-- Common Footer -->
+    <div class="footer-text">
+        © 2026 PDF PRINT PORTAL. All Rights Reserved.
     </div>
 
 </div>
 
 <script>
-    function togglePassword() {
-        const input = document.getElementById('pwdInput');
-        if (input.type === 'password') {
-            input.type = 'text';
-        } else {
-            input.type = 'password';
+    function switchPage(pageId, element) {
+        // Hide all pages
+        const pages = document.querySelectorAll('.page-content');
+        pages.forEach(page => page.classList.remove('active'));
+
+        // Show target page
+        document.getElementById(pageId).classList.add('active');
+
+        // Highlight tab if triggered from top nav
+        if (element) {
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            element.classList.add('active');
         }
     }
 
-    function generateCaptcha() {
-        const num1 = Math.floor(Math.random() * 10) + 1;
-        const num2 = Math.floor(Math.random() * 10) + 1;
-        document.getElementById('captchaQuestion').innerText = `${num1} + ${num2} = ?`;
+    function togglePass() {
+        const pass = document.getElementById('passInput');
+        pass.type = pass.type === 'password' ? 'text' : 'password';
+    }
+
+    function genMath() {
+        const a = Math.floor(Math.random() * 9) + 1;
+        const b = Math.floor(Math.random() * 9) + 1;
+        document.getElementById('mathProblem').innerText = `${a} + ${b} = ?`;
     }
 </script>
 
 </body>
 </html>
-
